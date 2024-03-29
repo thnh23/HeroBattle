@@ -1,0 +1,647 @@
+# depslib dependency file v1.0
+1710438874 source:d:\sdl\letdoit\optimusprime\src\animation\animation.cpp
+	"Animation.h"
+	"TextureManager.h"
+	<iostream>
+
+1710439868 d:\sdl\letdoit\optimusprime\src\animation\animation.h
+	<string>
+	"SDL.h"
+
+1710519723 d:\sdl\letdoit\optimusprime\src\graphics\texturemanager.h
+	<string>
+	"SDL.h"
+	<map>
+
+1710521735 source:d:\sdl\letdoit\optimusprime\src\graphics\texturemanager.cpp
+	"TextureManager.h"
+	"Engine.h"
+	<iostream>
+
+1710520261 d:\sdl\letdoit\optimusprime\src\core\engine.h
+	"SDL.h"
+	"SDL_image.h"
+	"GameMap.h"
+
+1710439043 source:d:\sdl\letdoit\optimusprime\src\inputs\input.cpp
+	"Input.h"
+	"Engine.h"
+
+1710439868 d:\sdl\letdoit\optimusprime\src\inputs\input.h
+	"SDL.h"
+
+1710440839 source:d:\sdl\letdoit\optimusprime\src\main.cpp
+	"Engine.h"
+
+1710439177 d:\sdl\letdoit\optimusprime\src\timer\timer.h
+
+1710521032 source:d:\sdl\letdoit\optimusprime\src\map\tilelayer.cpp
+	"TileLayer.h"
+	"TextureManager.h"
+	<iostream>
+
+1710439868 d:\sdl\letdoit\optimusprime\src\map\tilelayer.h
+	"Layer.h"
+	<string>
+	<vector>
+
+1710439257 d:\sdl\letdoit\optimusprime\src\map\layer.h
+
+1710521647 source:d:\sdl\letdoit\optimusprime\src\map\mapparser.cpp
+	"MapParser.h"
+
+1710510508 d:\sdl\letdoit\optimusprime\src\map\mapparser.h
+	<map>
+	<string>
+	"GameMap.h"
+	"TileLayer.h"
+	"tinyxml.h"
+
+1710439360 d:\sdl\letdoit\optimusprime\src\map\gamemap.h
+	<vector>
+	"Layer.h"
+
+1710426181 d:\sdl\letdoit\optimusprime\src\vendor\tinyxml\tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1710426166 d:\sdl\letdoit\optimusprime\src\vendor\tinyxml\tinystr.h
+	<assert.h>
+	<string.h>
+
+1710426158 source:d:\sdl\letdoit\optimusprime\src\vendor\tinyxml\tinystr.cpp
+	"tinystr.h"
+
+1710426174 source:d:\sdl\letdoit\optimusprime\src\vendor\tinyxml\tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1710426186 source:d:\sdl\letdoit\optimusprime\src\vendor\tinyxml\tinyxmlerror.cpp
+	"tinyxml.h"
+
+1710426192 source:d:\sdl\letdoit\optimusprime\src\vendor\tinyxml\tinyxmlparser.cpp
+	<ctype.h>
+	<stddef.h>
+	"tinyxml.h"
+	<windows.h>
+
+1710440709 source:d:\sdl\letdoit\optimusprime\src\timer\timer.cpp
+	"Timer.h"
+	"SDL.h"
+
+1710573352 source:d:\sdl\letdoit\optimusprime\src\characters\knight.cpp
+	"Knight.h"
+	"TextureManager.h"
+	"SDL.h"
+	"Input.h"
+
+1710438896 d:\sdl\letdoit\optimusprime\src\characters\knight.h
+	"Character.h"
+	"Animation.h"
+	"RigidBody.h"
+
+1710440517 d:\sdl\letdoit\optimusprime\src\characters\character.h
+	"GameObject.h"
+
+1710440525 d:\sdl\letdoit\optimusprime\src\object\gameobject.h
+	"IObject.h"
+	"Transform.h"
+	"SDL.h"
+
+1710438466 d:\sdl\letdoit\optimusprime\src\object\iobject.h
+
+1710438564 d:\sdl\letdoit\optimusprime\src\physics\transform.h
+	"Vector2D.h"
+
+1710438289 d:\sdl\letdoit\optimusprime\src\physics\vector2d.h
+	<iostream>
+
+1710572873 d:\sdl\letdoit\optimusprime\src\physics\rigidbody.h
+	"Vector2D.h"
+
+1710573591 source:d:\sdl\letdoit\optimusprime\src\core\engine.cpp
+	"Engine.h"
+	"TextureManager.h"
+	"Knight.h"
+	"Input.h"
+	"SDL.h"
+	<iostream>
+	"MapParser.h"
+
+1710514438 source:d:\sdl\letdoit\optimusprime\src\map\level.cpp
+	"level.h"
+	"TextureManager.h"
+	"tmxlite/Map.hpp"
+	"tmxlite/Layer.hpp"
+	"tmxlite/TileLayer.hpp"
+	<iostream>
+	<algorithm>
+
+1710512970 d:\sdl\letdoit\optimusprime\src\map\level.h
+	"SDL.h"
+	<string>
+	<vector>
+	<map>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\map.hpp
+	<tmxlite/Tileset.hpp>
+	<tmxlite/Layer.hpp>
+	<tmxlite/Property.hpp>
+	<tmxlite/Types.hpp>
+	<tmxlite/Object.hpp>
+	<string>
+	<vector>
+	<map>
+	<unordered_map>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\tileset.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Property.hpp>
+	<tmxlite/ObjectGroup.hpp>
+	<string>
+	<vector>
+	<array>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\config.hpp
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\property.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Types.hpp>
+	<string>
+	<cassert>
+	<vector>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\types.hpp
+	<tmxlite/Config.hpp>
+	<cstdint>
+	<ostream>
+	"Types.inl"
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\types.inl
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\objectgroup.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Layer.hpp>
+	<tmxlite/Object.hpp>
+	<vector>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\layer.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Property.hpp>
+	<tmxlite/Types.hpp>
+	<string>
+	<memory>
+	<vector>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\object.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Property.hpp>
+	<tmxlite/Types.hpp>
+	<string>
+	<vector>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\tilelayer.hpp
+	<tmxlite/Layer.hpp>
+	<tmxlite/Types.hpp>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\miniz.c
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<assert.h>
+	<stdio.h>
+	<sys/stat.h>
+	<sys/utime.h>
+	<sys/utime.h>
+	<sys/utime.h>
+	<utime.h>
+	<utime.h>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\detail\pugixml.cpp
+	"pugixml.hpp"
+	<tmxlite/detail/Android.hpp>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<assert.h>
+	<limits.h>
+	<wchar.h>
+	<math.h>
+	<float.h>
+	<setjmp.h>
+	<istream>
+	<ostream>
+	<string>
+	<new>
+	<stdint.h>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\detail\pugixml.hpp
+	"pugiconfig.hpp"
+	<stddef.h>
+	<exception>
+	<iterator>
+	<iosfwd>
+	<string>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\detail\pugiconfig.hpp
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\detail\android.hpp
+	<string>
+	<sstream>
+	<cstdlib>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\freefuncs.cpp
+	"miniz.h"
+	<zlib.h>
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/Types.hpp>
+	<tmxlite/detail/Log.hpp>
+	<cstring>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\miniz.h
+	"miniz.c"
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\miniz.c
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<assert.h>
+	<stdio.h>
+	<sys/stat.h>
+	<sys/utime.h>
+	<sys/utime.h>
+	<sys/utime.h>
+	<utime.h>
+	<utime.h>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\freefuncs.hpp
+	<tmxlite/detail/Android.hpp>
+	<tmxlite/detail/Log.hpp>
+	<tmxlite/Types.hpp>
+	<string>
+	<sstream>
+	<vector>
+	<functional>
+	<algorithm>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\detail\log.hpp
+	<string>
+	<iostream>
+	<iomanip>
+	<fstream>
+	<sstream>
+	<list>
+	<ctime>
+	<windows.h>
+	<android/log.h>
+	<cstring>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\types.hpp
+	<tmxlite/Config.hpp>
+	<cstdint>
+	<ostream>
+	"Types.inl"
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\config.hpp
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\types.inl
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\imagelayer.cpp
+	<pugixml.hpp>
+	"detail/pugixml.hpp"
+	<tmxlite/ImageLayer.hpp>
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/detail/Log.hpp>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\imagelayer.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Layer.hpp>
+	<tmxlite/Types.hpp>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\layer.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Property.hpp>
+	<tmxlite/Types.hpp>
+	<string>
+	<memory>
+	<vector>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\property.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Types.hpp>
+	<string>
+	<cassert>
+	<vector>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\layergroup.cpp
+	<pugixml.hpp>
+	"detail/pugixml.hpp"
+	<tmxlite/LayerGroup.hpp>
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/ObjectGroup.hpp>
+	<tmxlite/ImageLayer.hpp>
+	<tmxlite/TileLayer.hpp>
+	<tmxlite/detail/Log.hpp>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\layergroup.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Layer.hpp>
+	<tmxlite/Types.hpp>
+	<vector>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\objectgroup.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Layer.hpp>
+	<tmxlite/Object.hpp>
+	<vector>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\object.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Property.hpp>
+	<tmxlite/Types.hpp>
+	<string>
+	<vector>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\tilelayer.hpp
+	<tmxlite/Layer.hpp>
+	<tmxlite/Types.hpp>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\map.cpp
+	<pugixml.hpp>
+	"detail/pugixml.hpp"
+	<tmxlite/Map.hpp>
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/ObjectGroup.hpp>
+	<tmxlite/ImageLayer.hpp>
+	<tmxlite/TileLayer.hpp>
+	<tmxlite/LayerGroup.hpp>
+	<tmxlite/detail/Log.hpp>
+	<tmxlite/detail/Android.hpp>
+	<queue>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\map.hpp
+	<tmxlite/Tileset.hpp>
+	<tmxlite/Layer.hpp>
+	<tmxlite/Property.hpp>
+	<tmxlite/Types.hpp>
+	<tmxlite/Object.hpp>
+	<string>
+	<vector>
+	<map>
+	<unordered_map>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\tileset.hpp
+	<tmxlite/Config.hpp>
+	<tmxlite/Property.hpp>
+	<tmxlite/ObjectGroup.hpp>
+	<string>
+	<vector>
+	<array>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\object.cpp
+	<pugixml.hpp>
+	"detail/pugixml.hpp"
+	<tmxlite/Object.hpp>
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/Map.hpp>
+	<tmxlite/Tileset.hpp>
+	<tmxlite/detail/Log.hpp>
+	<sstream>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\objectgroup.cpp
+	<pugixml.hpp>
+	"detail/pugixml.hpp"
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/ObjectGroup.hpp>
+	<tmxlite/detail/Log.hpp>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\objecttypes.cpp
+	<pugixml.hpp>
+	"detail/pugixml.hpp"
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/ObjectTypes.hpp>
+	<tmxlite/detail/Log.hpp>
+
+1710512024 d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\include\tmxlite\objecttypes.hpp
+	<tmxlite/Property.hpp>
+	<string>
+	<vector>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\property.cpp
+	<pugixml.hpp>
+	"detail/pugixml.hpp"
+	<tmxlite/Property.hpp>
+	<tmxlite/detail/Log.hpp>
+	<tmxlite/FreeFuncs.hpp>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\tilelayer.cpp
+	<pugixml.hpp>
+	<zstd.h>
+	"detail/pugixml.hpp"
+	<zstd.h>
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/TileLayer.hpp>
+	<tmxlite/detail/Log.hpp>
+	<sstream>
+
+1710512024 source:d:\sdl\letdoit\optimusprime\src\vendor\tmxlite\src\tileset.cpp
+	<pugixml.hpp>
+	"detail/pugixml.hpp"
+	<tmxlite/Tileset.hpp>
+	<tmxlite/FreeFuncs.hpp>
+	<tmxlite/detail/Log.hpp>
+	<ctype.h>
+
+1710529778 source:d:\sdl\letdoit\optimusprime\src\camera\camera.cpp
+	"Camera.h"
+
+1710572776 d:\sdl\letdoit\optimusprime\src\camera\camera.h
+	"Point.h"
+	"Vector2D.h"
+
+1710572764 d:\sdl\letdoit\optimusprime\src\physics\point.h
+	<iostream>
+
+1710438874 source:d:\sdl\letdoit\herobattle\src\animation\animation.cpp
+	"Animation.h"
+	"TextureManager.h"
+	<iostream>
+
+1710439868 d:\sdl\letdoit\herobattle\src\animation\animation.h
+	<string>
+	"SDL.h"
+
+1710519723 d:\sdl\letdoit\herobattle\src\graphics\texturemanager.h
+	<string>
+	"SDL.h"
+	<map>
+
+1710599370 source:d:\sdl\letdoit\herobattle\src\camera\camera.cpp
+	"Camera.h"
+
+1710599267 d:\sdl\letdoit\herobattle\src\camera\camera.h
+	"Point.h"
+	"Vector2D.h"
+	"SDL.h"
+	"Engine.h"
+
+1710572764 d:\sdl\letdoit\herobattle\src\physics\point.h
+	<iostream>
+
+1710438289 d:\sdl\letdoit\herobattle\src\physics\vector2d.h
+	<iostream>
+
+1711563241 source:d:\sdl\letdoit\herobattle\src\characters\knight.cpp
+	"Knight.h"
+	"TextureManager.h"
+	"SDL.h"
+	"Input.h"
+	"Engine.h"
+	"Camera.h"
+	"Collision.h"
+
+1711563460 d:\sdl\letdoit\herobattle\src\characters\knight.h
+	"Character.h"
+	"Animation.h"
+	"RigidBody.h"
+	"Collider.h"
+
+1710440517 d:\sdl\letdoit\herobattle\src\characters\character.h
+	"GameObject.h"
+
+1710599224 d:\sdl\letdoit\herobattle\src\object\gameobject.h
+	"Transform.h"
+	"SDL.h"
+	"Point.h"
+
+1710438466 d:\sdl\letdoit\herobattle\src\object\iobject.h
+
+1710438564 d:\sdl\letdoit\herobattle\src\physics\transform.h
+	"Vector2D.h"
+
+1711380313 d:\sdl\letdoit\herobattle\src\physics\rigidbody.h
+	"Vector2D.h"
+
+1711562275 d:\sdl\letdoit\herobattle\src\inputs\input.h
+	"SDL.h"
+
+1711563622 source:d:\sdl\letdoit\herobattle\src\core\engine.cpp
+	"Engine.h"
+	"TextureManager.h"
+	"Knight.h"
+	"Input.h"
+	"SDL.h"
+	<iostream>
+	"MapParser.h"
+	"Camera.h"
+
+1711204056 d:\sdl\letdoit\herobattle\src\core\engine.h
+	"SDL.h"
+	"SDL_image.h"
+	"GameMap.h"
+
+1710439360 d:\sdl\letdoit\herobattle\src\map\gamemap.h
+	<vector>
+	"Layer.h"
+
+1710439257 d:\sdl\letdoit\herobattle\src\map\layer.h
+
+1710510508 d:\sdl\letdoit\herobattle\src\map\mapparser.h
+	<map>
+	<string>
+	"GameMap.h"
+	"TileLayer.h"
+	"tinyxml.h"
+
+1710439868 d:\sdl\letdoit\herobattle\src\map\tilelayer.h
+	"Layer.h"
+	<string>
+	<vector>
+
+1710426181 d:\sdl\letdoit\herobattle\src\vendor\tinyxml\tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1710426166 d:\sdl\letdoit\herobattle\src\vendor\tinyxml\tinystr.h
+	<assert.h>
+	<string.h>
+
+1711563429 source:d:\sdl\letdoit\herobattle\src\graphics\texturemanager.cpp
+	"TextureManager.h"
+	"Engine.h"
+	<iostream>
+	"Camera.h"
+
+1711530500 source:d:\sdl\letdoit\herobattle\src\inputs\input.cpp
+	"Input.h"
+	"Engine.h"
+
+1710440839 source:d:\sdl\letdoit\herobattle\src\main.cpp
+	"Engine.h"
+
+1710521647 source:d:\sdl\letdoit\herobattle\src\map\mapparser.cpp
+	"MapParser.h"
+
+1710521032 source:d:\sdl\letdoit\herobattle\src\map\tilelayer.cpp
+	"TileLayer.h"
+	"TextureManager.h"
+	<iostream>
+
+1710426158 source:d:\sdl\letdoit\herobattle\src\vendor\tinyxml\tinystr.cpp
+	"tinystr.h"
+
+1710426174 source:d:\sdl\letdoit\herobattle\src\vendor\tinyxml\tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1710426186 source:d:\sdl\letdoit\herobattle\src\vendor\tinyxml\tinyxmlerror.cpp
+	"tinyxml.h"
+
+1710426192 source:d:\sdl\letdoit\herobattle\src\vendor\tinyxml\tinyxmlparser.cpp
+	<ctype.h>
+	<stddef.h>
+	"tinyxml.h"
+	<windows.h>
+
+1710600884 source:d:\sdl\letdoit\herobattle\physics\collision.cpp
+	"Collision.h"
+
+1710600884 d:\sdl\letdoit\herobattle\physics\collision.h
+
+1711378102 d:\sdl\letdoit\herobattle\src\physics\collider.h
+	"SDL.h"
+
+1711386429 source:d:\sdl\letdoit\herobattle\src\physics\collision.cpp
+	"Collision.h"
+	"Engine.h"
+	<iostream>
+
+1710748731 d:\sdl\letdoit\herobattle\src\physics\collision.h
+	"SDL.h"
+	<vector>
+	"TileLayer.h"
+	"GameMap.h"
+
+1711388019 source:d:\sdl\letdoit\herobattle\src\characters\enemy.cpp
+	"Enemy.h"
+
+1711388019 d:\sdl\letdoit\herobattle\src\characters\enemy.h
+
