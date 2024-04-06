@@ -5,6 +5,9 @@
 #include"Engine.h"
 #include"Camera.h"
 #include"Collision.h"
+#include"GamePlay.h"
+#include"Timer.h"
+
 
 Knight::Knight(Properties* props):Character(props)
 {
@@ -13,12 +16,14 @@ Knight::Knight(Properties* props):Character(props)
     m_JumpForce = JUMP_FORCE;
     m_JumpTime =JUMP_TIME;
     m_AttackTime=ATTACK_TIME;
+    m_Health =MAX_HEALTH;
+    m_CoolDown=0;
 
     m_Collider = new Collider();
-    m_Collider->SetBuffer(20,10,-35,-13);
+     m_Collider->SetBuffer(20,12,-35,-15);
 
    m_RigidBody= new RigidBody();
-   m_RigidBody->setGravity(5);
+   m_RigidBody->setGravity(3);
 
     m_Animation = new Animation();
    m_Animation->setProps(m_TextureID,1,7,100);
@@ -28,11 +33,16 @@ void Knight::Draw()
 {
     m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
 
-//    Vector2D cam = Camera::GetInstance()->GetPos();
-//    SDL_Rect box = m_Collider->Get();
-//    box.x -= cam.X;
-//    box.y -= cam.Y;
-//    SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
+ Vector2D cam = Camera::GetInstance()->GetPos();
+    SDL_Rect box = m_Collider->Get();
+    box.x -= cam.X;
+    box.y -= cam.Y;
+    SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
+  box = attack_box;
+  box.x -= cam.X;
+   box.y -= cam.Y;
+// std::cout<<attack_box.x<<" "<<attack_box.y<<" "<<attack_box.w<<" "<<attack_box.h<<std::endl;
+ SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
 
 }
 
@@ -40,39 +50,56 @@ void Knight::Update(float dt)
 {
     isRunning = false;
     isDefending=false;
-     m_RigidBody->UnSetForce();
-// flip
- if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_A))
- {
-     m_Flip = SDL_FLIP_HORIZONTAL;
- }else if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_D))
- {
-    m_Flip =SDL_FLIP_NONE;
- }
+    m_RigidBody->UnSetForce();
+
  //move
  if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_A) && !isAttacking)
  {
-    m_RigidBody->ApplyForceX(5*BACKWARD);
+       m_Flip = SDL_FLIP_HORIZONTAL;
+    m_RigidBody->ApplyForceX(2*BACKWARD);
     isRunning=true;
  }
  if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_D) && !isAttacking)
  {
-    m_RigidBody->ApplyForceX(5*FORWARD);
+      m_Flip =SDL_FLIP_NONE;
+    m_RigidBody->ApplyForceX(2*FORWARD);
     isRunning = true;
  }
 
-//Defend
+//Attack
+ if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_J)&& m_CoolDown==0)
+ {
+
+     m_RigidBody->UnSetForce();
+    isAttacking=true;
+    m_CoolDown=0.5;
+ }
+
+  m_CoolDown-=dt;
+  if(m_CoolDown<=0) m_CoolDown=0;
+
+ if(isAttacking && m_AttackTime >0 )
+{
+    m_AttackTime-=dt;
+     if(m_Flip==SDL_FLIP_NONE) attack_box={m_Transform->X+40,m_Transform->Y+15,m_Width-35,m_Height-15};
+   else attack_box={m_Transform->X,m_Transform->Y+15,m_Width-35,m_Height-15};
+
+}
+else
+{
+    attack_box={0,0,0,0};
+    isAttacking=false;
+    isAttacking=false;
+    m_AttackTime=ATTACK_TIME;
+}
+
+ //Defend
  if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_S))
   {
       isDefending =true;
       m_RigidBody->UnSetForce();
+
   }
-//Attack
- if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_J))
- {
-     m_RigidBody->UnSetForce();
-    isAttacking=true;
- }
 
 //jump
 if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_W) && isGround )
@@ -98,16 +125,9 @@ else
        isFalling=true;
    }else isFalling = false;
 
-if(isAttacking && m_AttackTime >0)
-{
-    m_AttackTime-=dt;
-}else
-{
-    isAttacking=false;
-    m_AttackTime=ATTACK_TIME;
-}
+
 //update
-  m_RigidBody->Update(dt);
+  m_RigidBody->Update(0.8);
   m_LastSafePosition.X = m_Transform->X;
   m_Transform->X += m_RigidBody->Position().X;
   m_Collider->Set(m_Transform->X, m_Transform->Y,m_Width,m_Height);
@@ -117,7 +137,7 @@ if(isAttacking && m_AttackTime >0)
         m_Transform->X = m_LastSafePosition.X;
   }
 
-  m_RigidBody->Update(dt);
+  m_RigidBody->Update(0.8);
   m_LastSafePosition.Y = m_Transform->Y;
   m_Transform->Y+=m_RigidBody->Position().Y;
   m_Collider->Set(m_Transform->X, m_Transform->Y,m_Width,m_Height);
@@ -139,16 +159,14 @@ void Knight::AnimationState()
     if(isRunning)
         m_Animation->setProps("knight_run",1,7,120,m_Flip);
     if(isFalling)
-         m_Animation->setProps("knight_fall",1,3,140,m_Flip);
+         m_Animation->setProps("knight_fall",1,3,250,m_Flip);
     if(isJumping)
-        m_Animation->setProps("knight_jump",1,3,140,m_Flip);
+        m_Animation->setProps("knight_jump",1,3,200,m_Flip);
     if(isDefending)
-      m_Animation->setProps("knight_defend",1,5,140,m_Flip);
+      m_Animation->setProps("knight_defend",1,5,200,m_Flip);
     if(isAttacking)
         m_Animation->setProps("knight_attack1",1,5,120,m_Flip);
 }
-
-
 
 
 void Knight::Clean()
