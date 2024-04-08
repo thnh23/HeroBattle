@@ -6,7 +6,6 @@
 #include"Point.h"
 struct Properties
 {
-    public:
      std::string TextureID;
      int Width, Height;
      float X,Y;
@@ -22,11 +21,11 @@ struct Properties
         TextureID=textureID;
     }
 };
-//abstract class
+
 
  class GameObject
  {
-    protected:
+   protected:
         Point* m_Origin;
     Transform* m_Transform;
     int m_Width, m_Height;
