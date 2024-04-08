@@ -24,9 +24,9 @@ bool TextureManager::Load(std::string id, std::string fileName)
 
 void TextureManager::Draw(std::string id, int x, int y, int width, int height, SDL_RendererFlip flip)
 {
-     Vector2D cam =Camera::GetInstance()->GetPos()*0.5;
+     Vector2D cam =Camera::GetInstance()->GetPos();
     SDL_Rect srcRect = {0,0,width,height};
-    SDL_Rect dstRect = {x-cam.X,y-cam.Y,width,height};
+    SDL_Rect dstRect = {(x-cam.X),y-cam.Y,width,height};
     SDL_RenderCopyEx(Engine::GetInstance()->getRenderer(),m_TextureMap[id],&srcRect,&dstRect,0,nullptr,flip );
 }
 
@@ -60,7 +60,34 @@ void TextureManager::Clean()
         SDL_DestroyTexture(it->second);
     }
     m_TextureMap.clear();
-    SDL_Log("texture map cleaned!");
 }
 
+
+void TextureManager::RenderText(std::string textureText, SDL_Color textColor, int x, int y, int size)
+{
+	//SDL_RenderClear(Engine::GetInstance()->getRenderer());
+
+	SDL_Surface *textSurface = TTF_RenderText_Solid(Engine::GetInstance()->getFont(), textureText.c_str(), textColor);
+	if (textSurface == NULL)
+	{
+		std::cout << "Unable to render text surface! SDL_ttf Error: " << TTF_GetError() << '\n';
+		return;
+	}
+
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(Engine::GetInstance()->getRenderer(), textSurface);
+
+	if (texture == NULL)
+	{
+		std::cout << "Unable to create texture from rendered text! SDL Error: " << SDL_GetError() << '\n';
+		return;
+	}
+
+
+	SDL_FreeSurface(textSurface);
+
+	SDL_Rect textBox{x, y, 0, 0};
+	TTF_SetFontSize(Engine::GetInstance()->getFont(), size);
+	TTF_SizeText(Engine::GetInstance()->getFont(), textureText.c_str(), &textBox.w, &textBox.h);
+	SDL_RenderCopy(Engine::GetInstance()->getRenderer(), texture, NULL, &textBox);
+}
 
