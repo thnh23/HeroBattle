@@ -8,13 +8,14 @@
 HUD* HUD::m_Instance=nullptr;
 void HUD::initHUD()
 {
-    health=GamePlay::GetInstance()->getKnight()->getHealth();
-    coin=GamePlay::GetInstance()->getNumCoin();
+    health=100;
+    GamePlay::GetInstance()->setNumCoin(0);
 }
 
 void HUD::updateHUD()
 {
   if(health<0) health=0;
+  else health =GamePlay::GetInstance()->getKnight()->getHealth();
    coin=GamePlay::GetInstance()->getNumCoin();
 }
 
@@ -25,7 +26,6 @@ void HUD::drawHUD()
 SDL_Surface* healthbar_sur = IMG_Load("Image/Bar.png");
 SDL_Texture* healthbar_tex = SDL_CreateTextureFromSurface(Engine::GetInstance()->getRenderer(), healthbar_sur);
 SDL_Rect rect{85, 5, MAX_HEALTH, 22};
-health=GamePlay::GetInstance()->getKnight()->getHealth();
 SDL_Rect rect2{87, 7, health, 18};
 SDL_RenderCopy(Engine::GetInstance()->getRenderer(), healthbar_tex, NULL, &rect);
 SDL_SetRenderDrawColor(Engine::GetInstance()->getRenderer(), 255, 0, 0, 255);

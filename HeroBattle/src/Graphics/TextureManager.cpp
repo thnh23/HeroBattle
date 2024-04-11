@@ -2,6 +2,7 @@
 #include"Engine.h"
 #include<iostream>
 #include"Camera.h"
+
 TextureManager* TextureManager::m_Instance=nullptr;
 
 bool TextureManager::Load(std::string id, std::string fileName)
@@ -30,11 +31,17 @@ void TextureManager::Draw(std::string id, int x, int y, int width, int height, S
     SDL_RenderCopyEx(Engine::GetInstance()->getRenderer(),m_TextureMap[id],&srcRect,&dstRect,0,nullptr,flip );
 }
 
-void TextureManager::DrawFrame(std::string id, int x,int y, int width,int height, int row,int frame, SDL_RendererFlip flip )
+void TextureManager::DrawFrame(std::string id, int x,int y, int width,int height, int row,int frame, SDL_RendererFlip flip)
 {
      Vector2D cam =Camera::GetInstance()->GetPos();
     SDL_Rect srcRect ={width*frame,height*(row-1),width,height};
     SDL_Rect dstRect ={x-cam.X,y-cam.Y,width,height};
+    SDL_RenderCopyEx(Engine::GetInstance()->getRenderer(),m_TextureMap[id],&srcRect,&dstRect,0,nullptr,flip );
+}
+void TextureManager::DrawFrameNoCamera(std::string id, int x,int y, int width,int height, int row,int frame, SDL_RendererFlip flip)
+{
+    SDL_Rect srcRect ={width*frame,height*(row-1),width,height};
+    SDL_Rect dstRect ={x,y,width,height};
     SDL_RenderCopyEx(Engine::GetInstance()->getRenderer(),m_TextureMap[id],&srcRect,&dstRect,0,nullptr,flip );
 }
 void TextureManager::DrawTile(std::string tilesetID,int tileSize, int x,int y, int row,int frame, SDL_RendererFlip flip)
@@ -89,5 +96,12 @@ void TextureManager::RenderText(std::string textureText, SDL_Color textColor, in
 	TTF_SetFontSize(Engine::GetInstance()->getFont(), size);
 	TTF_SizeText(Engine::GetInstance()->getFont(), textureText.c_str(), &textBox.w, &textBox.h);
 	SDL_RenderCopy(Engine::GetInstance()->getRenderer(), texture, NULL, &textBox);
+}
+
+
+void TextureManager::DrawAlphaMode(std::string textureText, Uint8 alpha)
+{
+    SDL_SetTextureBlendMode(m_TextureMap[textureText],SDL_BLENDMODE_BLEND);
+    SDL_SetTextureAlphaMod(m_TextureMap[textureText],alpha);
 }
 

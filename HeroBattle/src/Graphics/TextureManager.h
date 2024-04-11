@@ -16,9 +16,10 @@ class TextureManager
   void Clean();
   void Draw(std::string id, int x,int y, int width,int height, SDL_RendererFlip flip =SDL_FLIP_NONE);
   void DrawFrame(std::string id, int x,int y, int width,int height, int row,int frame, SDL_RendererFlip flip =SDL_FLIP_NONE);
+  void DrawFrameNoCamera(std::string id, int x,int y, int width,int height, int row,int frame, SDL_RendererFlip flip =SDL_FLIP_NONE);
   void DrawTile(std::string tilesetID,int tileSize, int x,int y, int row,int frame, SDL_RendererFlip flip =SDL_FLIP_NONE);
   void RenderText(std::string textureText, SDL_Color textColor, int x, int y, int size);
-
+ void DrawAlphaMode(std::string textureText, Uint8 alpha);
 
   private:
   TextureManager(){};
