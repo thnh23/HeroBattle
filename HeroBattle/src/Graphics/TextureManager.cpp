@@ -19,6 +19,7 @@ bool TextureManager::Load(std::string id, std::string fileName)
         std::cout<<"Failed to load texture from surface";
         return false;
     }
+    	SDL_FreeSurface(surface);
     m_TextureMap[id] = texture;
     return true;
 }
@@ -96,6 +97,7 @@ void TextureManager::RenderText(std::string textureText, SDL_Color textColor, in
 	TTF_SetFontSize(Engine::GetInstance()->getFont(), size);
 	TTF_SizeText(Engine::GetInstance()->getFont(), textureText.c_str(), &textBox.w, &textBox.h);
 	SDL_RenderCopy(Engine::GetInstance()->getRenderer(), texture, NULL, &textBox);
+	SDL_DestroyTexture(texture);
 }
 
 
