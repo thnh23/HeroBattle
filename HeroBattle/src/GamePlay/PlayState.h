@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PLAYSTATE_H
 #define PLAYSTATE_H
 

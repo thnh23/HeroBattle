@@ -1,14 +1,12 @@
 #pragma once
-#ifndef RESUMESTATE_H
-#define RESUMESTATE_H
-
-
+#ifndef SHOPSTATE_H
+#define SHOPSTATE_H
 #include"GameState.h"
 #include<string>
 #include"Button.h"
 #include<vector>
 
-class ResumeState : public GameState
+class ShopState : public GameState
 {
     public:
       virtual void update(float dt);
@@ -21,11 +19,11 @@ class ResumeState : public GameState
        virtual void onMouseButtonUp(SDL_Event& e);
        virtual void onMouseMove(SDL_Event& e){};
 
-       virtual std::string getStateID() const { return resumeID; }
+       virtual std::string getStateID() const { return shopID; }
 
     private:
-        static const std::string resumeID;
-       std::vector<Button*> resumeButton;
+        static const std::string shopID;
+       std::vector<Button*> shopButton;
 };
 
-#endif // RESUMESTATE_H
+#endif // SHOPSTATE_H

@@ -16,6 +16,7 @@ class GameStateMachine
        gameStates.push_back(state);
        gameStates.back()->onEnter();
         }
+
        void changeState(GameState* state)
        {
            if (!gameStates.empty())
@@ -24,18 +25,24 @@ class GameStateMachine
               {
                      return;
               }
+//
+//       gameStates.push_back(state);
+//
+//       if (!gameStates.empty())
+//       {
+//              if (gameStates.back()->onExit())
+//              {
+//                gameStates.erase(gameStates.end() - 2);
+//              }
+//       }
+//
+//       gameStates.back()->onEnter();
+        if(gameStates.back()->onExit())
+        {
+            gameStates.erase(gameStates.end()-1);
+        }
        }
-
        gameStates.push_back(state);
-
-       if (!gameStates.empty())
-       {
-              if (gameStates.back()->onExit())
-              {
-                     gameStates.erase(gameStates.end() - 2);
-              }
-       }
-
        gameStates.back()->onEnter();
        }
        void popState()
@@ -68,14 +75,14 @@ class GameStateMachine
         {
              if (!gameStates.empty())
        {
-              gameStates.back()->onMouseButtonDown(e);
+              gameStates.back()->onMouseButtonUp(e);
        }
         }
        void onMouseButtonDown(SDL_Event& e)
        {
              if (!gameStates.empty())
        {
-              gameStates.back()->onMouseButtonUp(e);
+              gameStates.back()->onMouseButtonDown(e);
        }
        }
        void onMouseMove(SDL_Event& e)

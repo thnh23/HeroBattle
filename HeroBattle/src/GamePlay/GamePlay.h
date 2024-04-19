@@ -19,8 +19,11 @@ class GamePlay
    Knight* getKnight(){return player;}
    int getNumCoin(){return CoinCount;}
    void setNumCoin(int x){CoinCount=x;}
+   void updateCoin(int x){CoinCount-=x;}
+
 
     private:
+    SDL_Color color{255,255,0};
     int CoinCount;
      static GamePlay* m_Instance;
     Knight* player;

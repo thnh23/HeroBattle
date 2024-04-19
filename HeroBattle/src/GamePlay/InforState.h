@@ -1,14 +1,12 @@
 #pragma once
-#ifndef RESUMESTATE_H
-#define RESUMESTATE_H
-
-
+#ifndef INFORSTATE_H
+#define INFORSTATE_H
 #include"GameState.h"
 #include<string>
 #include"Button.h"
 #include<vector>
 
-class ResumeState : public GameState
+class InforState : public GameState
 {
     public:
       virtual void update(float dt);
@@ -21,11 +19,11 @@ class ResumeState : public GameState
        virtual void onMouseButtonUp(SDL_Event& e);
        virtual void onMouseMove(SDL_Event& e){};
 
-       virtual std::string getStateID() const { return resumeID; }
+       virtual std::string getStateID() const { return inforID; }
 
     private:
-        static const std::string resumeID;
-       std::vector<Button*> resumeButton;
+        static const std::string inforID;
+       Button* closeInfor;
 };
 
-#endif // RESUMESTATE_H
+#endif // INFORSTATE_H
