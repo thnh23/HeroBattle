@@ -1,22 +1,23 @@
+#ifndef BOSS_H
+#define BOSS_H
 
-#ifndef ENEMY_H
-#define ENEMY_H
+
 #include"Character.h"
 #include"Animation.h"
 #include"RigidBody.h"
 #include"Collider.h"
 
 
-const int ENEMY_HEALTH=30;
-const float ENEMY_ATTACK_TIME=1.5;
+const int BOSS_HEALTH=1;
+const float BOSS_ATTACK_TIME=1.5;
 
 
-class Enemy : public Character
+class Boss : public Character
 {
     public:
 
-     Enemy(Properties* props);
-      virtual ~Enemy(){}
+     Boss(Properties* props);
+      virtual ~Boss(){}
       virtual void Draw();
       virtual void Update(float dt);
       virtual void Clean();
@@ -42,11 +43,11 @@ class Enemy : public Character
      bool isGround;
      bool isRunning;
      bool isHitting;
-     bool isDied;
+      bool isDied;
   //   bool isJumping;
 
   //  int m_JumpTime;
-    int m_Health;
+     int m_Health;
      float m_AttackTime;
      float m_CoolDown;
      float m_DiedAnimation;
@@ -63,4 +64,4 @@ class Enemy : public Character
 };
 
 
-#endif
+#endif // BOSS_H
