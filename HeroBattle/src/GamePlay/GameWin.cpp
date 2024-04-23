@@ -1,4 +1,4 @@
-#include "GameOverState.h"
+#include "GameWin.h"
 #include<string>
 #include"Engine.h"
 #include"Button.h"
@@ -7,60 +7,59 @@
 #include"MenuState.h"
 #include"HUD.h"
 #include"GamePlay.h"
-const std::string GameOverState::gameOverID = "GAMEOVER";
-void GameOverState::update(float dt)
+const std::string GameWin::gameWinID = "GAMEWIN";
+void GameWin::update(float dt)
 {
-for(auto it = gameOverButton.begin(); it!= gameOverButton.end();it++)
+for(auto it = gameWinButton.begin(); it!= gameWinButton.end();it++)
  {
     (*it)->update();
  }
- GamePlay::GetInstance()->getKnight()->isDied=true;
- GamePlay::GetInstance()->getKnight()->AnimationState();
+
 }
 
-void GameOverState::render()
+void GameWin::render()
 {
     TextureManager::GetInstance()->Draw("bg",0,0,1920,1080);
   Engine::GetInstance()->GetMap()->Render();
   GamePlay::GetInstance()->draw();
  TextureManager::GetInstance()->DrawFrameNoCamera("resume_border",SCREEN_WIDTH/2-300,SCREEN_HEIGHT/2-200,600,400,1,0);
- TextureManager::GetInstance()->RenderText("GAME OVER",{255,255,255},SCREEN_WIDTH/2-155,SCREEN_HEIGHT/2-100,100);
- for(auto it = gameOverButton.begin(); it!= gameOverButton.end();it++)
+ TextureManager::GetInstance()->RenderText("YOU WIN",{255,255,255},SCREEN_WIDTH/2-120,SCREEN_HEIGHT/2-100,100);
+ for(auto it = gameWinButton.begin(); it!= gameWinButton.end();it++)
  {
     (*it)->draw();
  }
 
 }
 
-bool GameOverState::onEnter()
+bool GameWin::onEnter()
 {
-    gameOverButton.push_back(new Button("homebutton",SCREEN_WIDTH/2-80,SCREEN_HEIGHT/2+50,64,60,1));
-    gameOverButton.push_back(new Button("restartbutton",SCREEN_WIDTH/2+30,SCREEN_HEIGHT/2+50,63,60,1));
+    gameWinButton.push_back(new Button("homebutton",SCREEN_WIDTH/2-80,SCREEN_HEIGHT/2+50,64,60,1));
+    gameWinButton.push_back(new Button("restartbutton",SCREEN_WIDTH/2+30,SCREEN_HEIGHT/2+50,63,60,1));
 return true;
 }
 
-bool GameOverState::onExit()
+bool GameWin::onExit()
 {
-      for(auto it = gameOverButton.begin(); it != gameOverButton.end(); ++it)
+      for(auto it = gameWinButton.begin(); it != gameWinButton.end(); ++it)
     {
          delete (*it);
          (*it) = nullptr;
-         gameOverButton.erase(it);
+         gameWinButton.erase(it);
          --it;
     }
 return true;
 }
 
-void GameOverState::onMouseButtonUp(SDL_Event& e)
+void GameWin::onMouseButtonUp(SDL_Event& e)
 {
-if(gameOverButton[0]->checkCollision(Input::GetInstance()->getMousePos()))
+if(gameWinButton[0]->checkCollision(Input::GetInstance()->getMousePos()))
     {
         HUD::GetInstance()->initHUD();
         GamePlay::GetInstance()->init();
         Camera::GetInstance()->SetTarget(GamePlay::GetInstance()->getKnight()->GetOrigin());
         Engine::GetInstance()->getStateMachine()->changeState(new MenuState());
     }
-    if(gameOverButton[1]->checkCollision(Input::GetInstance()->getMousePos()))
+    if(gameWinButton[1]->checkCollision(Input::GetInstance()->getMousePos()))
     {
         HUD::GetInstance()->initHUD();
         GamePlay::GetInstance()->init();

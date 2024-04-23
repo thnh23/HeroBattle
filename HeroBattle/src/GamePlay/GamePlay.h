@@ -5,6 +5,7 @@
 #include<vector>
 #include"Vector2D.h"
 #include"Item.h"
+#include"Boss.h"
 
 class GamePlay
 {
@@ -16,7 +17,9 @@ class GamePlay
    void init();
    void update(float dt);
    void draw();
+   void close();
    Knight* getKnight(){return player;}
+   std::vector<Boss*> getBoss(){return bossArr;}
    int getNumCoin(){return CoinCount;}
    void setNumCoin(int x){CoinCount=x;}
    void updateCoin(int x){CoinCount-=x;}
@@ -29,6 +32,8 @@ class GamePlay
     Knight* player;
     std::vector<Enemy*> enemyArr ;
     std::vector<Enemy*> enemyAttack;
+   std::vector<Boss*> bossArr;
+   std::vector<Boss*> bossAttack;
     std::vector<Item*>  ItemArr;
 };
 

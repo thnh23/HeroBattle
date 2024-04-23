@@ -6,6 +6,7 @@
 #include"Button.h"
 #include"PlayState.h"
 #include"GameOverState.h"
+#include"GameWin.h"
 const std::string ShopState::shopID = "SHOP";
 void ShopState::update(float dt)
 {
@@ -50,6 +51,7 @@ void ShopState::render()
     (*it)->draw();
  }
   if(GamePlay::GetInstance()->getKnight()->getHealth()<=0)   Engine::GetInstance()->getStateMachine()->changeState(new GameOverState());
+     if(GamePlay::GetInstance()->getBoss()[0]->getHealth()<=0)  Engine::GetInstance()->getStateMachine()->changeState(new GameWin());
 }
 
 bool ShopState::onEnter()
@@ -82,7 +84,7 @@ void ShopState::onMouseButtonUp(SDL_Event& e)
         if((GamePlay::GetInstance()->getNumCoin()>=30) &&  (GamePlay::GetInstance()->getKnight()->getHealth() != MAX_HEALTH))
         {
          GamePlay::GetInstance()->updateCoin(30);
-         GamePlay::GetInstance()->getKnight()->updateHealth(-30);
+         GamePlay::GetInstance()->getKnight()->healing(20);
         }
     }
     if(shopButton[1]->checkCollision(Input::GetInstance()->getMousePos()))
