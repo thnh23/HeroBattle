@@ -12,6 +12,7 @@ Boss::Boss(Properties* props): Character(props)
      isAttacking = false;
     isDied = false;
     isHitting=false;
+    isSpecialHitting=false;
    m_AttackTime = BOSS_ATTACK_TIME;
     m_Health = BOSS_HEALTH;
     m_CoolDown=0;
@@ -39,22 +40,27 @@ void Boss::Draw()
    }
    else if(isRunning) m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
    else  m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
-
-  Vector2D cam = Camera::GetInstance()->GetPos();
-     SDL_Rect box = m_Collider->Get();
-    box.x -= cam.X;
-    box.y -= cam.Y;
-    SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
-    box = attack_box;
-    box.x -= cam.X;
-    box.y -= cam.Y;
-  SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
+ SDL_RenderFillRect(Engine::GetInstance()->getRenderer(),&health_box);
+//  Vector2D cam = Camera::GetInstance()->GetPos();
+//     SDL_Rect box = m_Collider->Get();
+//    box.x -= cam.X;
+//    box.y -= cam.Y;
+//    SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
+//    box = attack_box;
+//    box.x -= cam.X;
+//    box.y -= cam.Y;
+//  SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
 }
 
 void Boss::Update(float dt)
 {
+     //health bar
+    Vector2D cam = Camera::GetInstance()->GetPos();
+    health_box={m_Transform->X-cam.X+20,m_Transform->Y-cam.Y+80,(float)m_Health/1000*50,5};
+   //
     isRunning=false;
  m_RigidBody->UnSetForce();
+ if(m_Health<0) m_Health=0;
 
 
 
@@ -79,7 +85,7 @@ void Boss::Update(float dt)
         m_Transform->X=m_LastSafePosition.X;
         if(m_CoolDown==0){
         isAttacking=true;
-        m_CoolDown=2;
+        m_CoolDown=2.5;
         }
     }
    if(m_CoolDown>0) m_CoolDown-=dt;

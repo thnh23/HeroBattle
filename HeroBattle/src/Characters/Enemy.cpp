@@ -16,9 +16,10 @@ Enemy::Enemy(Properties* props):Character(props)
     isAttacking = false;
     isDied = false;
    isHitting=false;
+   isSpecialHitting=false;
    m_AttackTime = ENEMY_ATTACK_TIME;
     m_Health = ENEMY_HEALTH;
-    m_DiedAnimation = 0.6;
+    m_DiedAnimation = 0.4;
     m_CoolDown=0;
     m_Damage=2;
     m_Deffend=0;
@@ -31,13 +32,15 @@ Enemy::Enemy(Properties* props):Character(props)
 
     m_Animation = new Animation();
    m_Animation->setProps(m_TextureID,1,8,100);
+
 }
 
 void Enemy::Draw()
 {
      m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
 
-//  Vector2D cam = Camera::GetInstance()->GetPos();
+     SDL_RenderFillRect(Engine::GetInstance()->getRenderer(),&health_box);
+   //  Vector2D cam = Camera::GetInstance()->GetPos();
 //     SDL_Rect box = m_Collider->Get();
 //    box.x -= cam.X;
 //    box.y -= cam.Y;
@@ -50,8 +53,13 @@ void Enemy::Draw()
 
 void Enemy::Update(float dt)
 {
+    //health bar
+    Vector2D cam = Camera::GetInstance()->GetPos();
+   health_box={m_Transform->X-cam.X+30,m_Transform->Y-cam.Y+10,m_Health,4};
+   //
     isRunning=false;
  m_RigidBody->UnSetForce();
+ if(m_Health<0) m_Health=0;
 //
 // if(m_Health<=0) isDied= true;
 //Follow player

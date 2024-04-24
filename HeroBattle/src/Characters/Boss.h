@@ -8,7 +8,7 @@
 #include"Collider.h"
 
 
-const int BOSS_HEALTH=1;
+const int BOSS_HEALTH=1000;
 const float BOSS_ATTACK_TIME=1.5;
 
 
@@ -44,8 +44,7 @@ class Boss : public Character
      bool isRunning;
      bool isHitting;
       bool isDied;
-  //   bool isJumping;
-
+      bool isSpecialHitting;
   //  int m_JumpTime;
      int m_Health;
      float m_AttackTime;
@@ -61,6 +60,7 @@ class Boss : public Character
       RigidBody* m_RigidBody;
       Vector2D m_LastSafePosition;
       SDL_Rect attack_box;
+      SDL_Rect health_box;
 };
 
 

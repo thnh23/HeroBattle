@@ -43,7 +43,7 @@ class Enemy : public Character
      bool isRunning;
      bool isHitting;
      bool isDied;
-  //   bool isJumping;
+     bool isSpecialHitting;
 
   //  int m_JumpTime;
     int m_Health;
@@ -60,6 +60,8 @@ class Enemy : public Character
       RigidBody* m_RigidBody;
       Vector2D m_LastSafePosition;
       SDL_Rect attack_box;
+      SDL_Rect health_box;
+
 };
 
 
