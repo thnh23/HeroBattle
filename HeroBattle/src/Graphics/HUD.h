@@ -20,6 +20,7 @@ class HUD
         Timer m_Timer;
         int minute, second;
         std::string time;
+        float energy;
 };
 
 #endif // HUD_H
