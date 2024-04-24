@@ -36,7 +36,7 @@ void PlayState::render()
     (*it)->draw();
 }
    if(GamePlay::GetInstance()->getKnight()->getHealth()<=0)   Engine::GetInstance()->getStateMachine()->changeState(new GameOverState());
-   if(GamePlay::GetInstance()->getBoss()[0]->getHealth()<=0)  Engine::GetInstance()->getStateMachine()->changeState(new GameWin());
+   if(!GamePlay::GetInstance()->getBoss().empty() && GamePlay::GetInstance()->getBoss()[0]->getHealth()<=0)  Engine::GetInstance()->getStateMachine()->changeState(new GameWin());
 }
 
 bool PlayState::onEnter()

@@ -8,6 +8,7 @@
 #include"GamePlay.h"
 #include"HUD.h"
 #include"InforState.h"
+#include"LoadingState.h"
 
 const std::string MenuState::menuID = "MENU";
 
@@ -57,7 +58,7 @@ void MenuState::onMouseButtonUp(SDL_Event& e)
 {
     if(menuButton[0]->checkCollision(Input::GetInstance()->getMousePos()))
     {
-       Engine::GetInstance()->getStateMachine()->changeState(new PlayState());
+       Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
     }
     if(menuButton[1]->checkCollision(Input::GetInstance()->getMousePos()))
     {

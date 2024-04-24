@@ -37,21 +37,21 @@ void ShopState::render()
   TextureManager::GetInstance()->RenderText("+3 attack",{255,255,255},SCREEN_WIDTH/2+30,SCREEN_HEIGHT/2+10,50);
   TextureManager::GetInstance()->RenderText("+3 deffend",{255,255,255},SCREEN_WIDTH/2+30,SCREEN_HEIGHT/2+110,50);
 
-  TextureManager::GetInstance()->RenderText("30 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2-90,50);
-  TextureManager::GetInstance()->RenderText("50 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2+10,50);
-  TextureManager::GetInstance()->RenderText("50 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2+110,50);
+  TextureManager::GetInstance()->RenderText("10 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2-90,50);
+  TextureManager::GetInstance()->RenderText("5 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2+10,50);
+  TextureManager::GetInstance()->RenderText("5 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2+110,50);
 
   TextureManager::GetInstance()->DrawFrameNoCamera("resume_border",0,SCREEN_HEIGHT/2-200,300,400,1,0);
   TextureManager::GetInstance()->RenderText("STATS",{255,255,255},80,SCREEN_HEIGHT/2-170,70);
-  TextureManager::GetInstance()->RenderText("HEALTH: " + std::to_string(GamePlay::GetInstance()->getKnight()->getHealth()) +"/" + std::to_string(MAX_HEALTH),{255,255,255},40,SCREEN_HEIGHT/2-90,50);
-  TextureManager::GetInstance()->RenderText("ATTACK: " + std::to_string(GamePlay::GetInstance()->getKnight()->getAttack()),{255,255,255},40,SCREEN_HEIGHT/2,50);
-    TextureManager::GetInstance()->RenderText("DEFFEND: " + std::to_string(GamePlay::GetInstance()->getKnight()->getDeffend()),{255,255,255},40,SCREEN_HEIGHT/2+90,50);
+  TextureManager::GetInstance()->RenderText("HEALTH: " + std::to_string((int)GamePlay::GetInstance()->getKnight()->getHealth()) +"/" + std::to_string(MAX_HEALTH),{255,255,255},40,SCREEN_HEIGHT/2-90,50);
+  TextureManager::GetInstance()->RenderText("ATTACK: " + std::to_string((int)GamePlay::GetInstance()->getKnight()->getAttack()),{255,255,255},40,SCREEN_HEIGHT/2,50);
+    TextureManager::GetInstance()->RenderText("DEFFEND: " + std::to_string((int)GamePlay::GetInstance()->getKnight()->getDeffend()),{255,255,255},40,SCREEN_HEIGHT/2+90,50);
     for(auto it = shopButton.begin(); it!= shopButton.end();it++)
  {
     (*it)->draw();
  }
   if(GamePlay::GetInstance()->getKnight()->getHealth()<=0)   Engine::GetInstance()->getStateMachine()->changeState(new GameOverState());
-     if(GamePlay::GetInstance()->getBoss()[0]->getHealth()<=0)  Engine::GetInstance()->getStateMachine()->changeState(new GameWin());
+  if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP4")&&GamePlay::GetInstance()->getBoss()[0]->getHealth()<=0)  Engine::GetInstance()->getStateMachine()->changeState(new GameWin());
 }
 
 bool ShopState::onEnter()
@@ -81,25 +81,25 @@ void ShopState::onMouseButtonUp(SDL_Event& e)
 {
  if(shopButton[0]->checkCollision(Input::GetInstance()->getMousePos()))
     {
-        if((GamePlay::GetInstance()->getNumCoin()>=30) &&  (GamePlay::GetInstance()->getKnight()->getHealth() != MAX_HEALTH))
+        if((GamePlay::GetInstance()->getNumCoin()>=10) &&  (GamePlay::GetInstance()->getKnight()->getHealth() != MAX_HEALTH))
         {
-         GamePlay::GetInstance()->updateCoin(30);
+         GamePlay::GetInstance()->updateCoin(10);
          GamePlay::GetInstance()->getKnight()->healing(20);
         }
     }
     if(shopButton[1]->checkCollision(Input::GetInstance()->getMousePos()))
     {
-        if((GamePlay::GetInstance()->getNumCoin()>=50))
+        if((GamePlay::GetInstance()->getNumCoin()>=5))
         {
-       GamePlay::GetInstance()->updateCoin(50);
+       GamePlay::GetInstance()->updateCoin(5);
         GamePlay::GetInstance()->getKnight()->updateAttack(3);
         }
     }
     if(shopButton[2]->checkCollision(Input::GetInstance()->getMousePos()))
     {
-        if(GamePlay::GetInstance()->getNumCoin()>=50)
+        if(GamePlay::GetInstance()->getNumCoin()>=5)
         {
-         GamePlay::GetInstance()->updateCoin(50);
+         GamePlay::GetInstance()->updateCoin(5);
          GamePlay::GetInstance()->getKnight()->updateDeffend(3);
         }
     }

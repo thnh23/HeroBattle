@@ -6,6 +6,7 @@
 #include"GameStateMachine.h"
 #include"PlayState.h"
 #include"MenuState.h"
+#include"LoadingState.h"
 
 
 const std::string ResumeState::resumeID = "RESUME";
@@ -63,7 +64,7 @@ void ResumeState::onMouseButtonUp(SDL_Event& e)
     if(resumeButton[1]->checkCollision(Input::GetInstance()->getMousePos()))
     {
     HUD::GetInstance()->initHUD();
-     GamePlay::GetInstance()->init();
+    GamePlay::GetInstance()->init();
     Camera::GetInstance()->SetTarget(GamePlay::GetInstance()->getKnight()->GetOrigin());
     Engine::GetInstance()->getStateMachine()->changeState(new MenuState());
     }
@@ -72,6 +73,6 @@ void ResumeState::onMouseButtonUp(SDL_Event& e)
     HUD::GetInstance()->initHUD();
     GamePlay::GetInstance()->init();
     Camera::GetInstance()->SetTarget(GamePlay::GetInstance()->getKnight()->GetOrigin());
-    Engine::GetInstance()->getStateMachine()->changeState(new PlayState());
+     Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
     }
 }

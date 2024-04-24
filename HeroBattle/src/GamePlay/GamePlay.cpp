@@ -13,7 +13,9 @@ GamePlay* GamePlay::m_Instance = nullptr;
 
 void GamePlay::init()
 {
-  player = new Knight(new Properties("knight",1500,0,72,86));
+     Engine::GetInstance()->setMap("MAP3");
+       Collision::GetInstance()->init();
+  player = new Knight(new Properties("knight",50,400,72,86));
 
   for(auto it = enemyArr.begin(); it != enemyArr.end(); ++it)
     {
@@ -29,14 +31,17 @@ void GamePlay::init()
          bossArr.erase(it);
          --it;
     }
-   for(int i=0;i<1;i++)
-   {
-       bossArr.push_back(new Boss(new Properties("boss",1000,0,100,180)));
-   }
-   for(int i=0;i<1;i++)
-  {
-      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96*2,0,96,64)));
-  }
+    for(auto it = ItemArr.begin(); it != ItemArr.end(); ++it)
+    {
+      delete (*it);
+         (*it) = nullptr;
+         ItemArr.erase(it);
+         --it;
+    }
+//    for(int i=0;i<10;i++)
+//  {
+//      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96*2,400,96,64)));
+//  }
 
 }
 
@@ -49,6 +54,11 @@ void GamePlay::update(float dt)
     {
         (*it)->isHitting = false;
     }
+    if(player->getEnergy()==100)
+    {
+        (*it)->isSpecialHitting = false;
+    }
+
     //push enemy to enemy attack arr
     if((*it)->isAttacking)  enemyAttack.push_back(*it);
     }
@@ -59,7 +69,12 @@ void GamePlay::update(float dt)
     {
         (*it)->isHitting = false;
     }
-    //push enemy to enemy attack arr
+    if(player->getEnergy()==100)
+    {
+        (*it)->isSpecialHitting = false;
+    }
+
+    //push boss to boss attack arr
     if((*it)->isAttacking) bossAttack.push_back(*it);
     }
 //check enemy can attack player
@@ -73,10 +88,11 @@ void GamePlay::update(float dt)
             enemyAttack.erase(it);
             --it;
          }
+
     }
     for(auto it = bossAttack.begin(); it != bossAttack.end(); ++it)
     {
-         if((*it)->m_CoolDown==0 )
+         if((*it)->m_CoolDown==0)
          {
              player->isHitting=false;
 //             delete(*it);
@@ -93,6 +109,11 @@ void GamePlay::update(float dt)
           (*it)->updateHealth(player->getAttack());
           (*it)->isHitting = true;
         }
+         if(Collision::GetInstance()->checkCollision(player->getSpecialAtkBox(),(*it)->GetCollider()->Get()) && !(*it)->isSpecialHitting)
+        {
+           (*it)->updateHealth(player->getSpecialAtk());
+          (*it)->isSpecialHitting = true;
+        }
     }
    for(auto it = bossArr.begin(); it != bossArr.end(); ++it)
     {
@@ -100,6 +121,11 @@ void GamePlay::update(float dt)
         {
           (*it)->updateHealth(player->getAttack());
           (*it)->isHitting = true;
+        }
+         if(Collision::GetInstance()->checkCollision(player->getSpecialAtkBox(),(*it)->GetCollider()->Get()) && !(*it)->isSpecialHitting)
+        {
+           (*it)->updateHealth(player->getSpecialAtk());
+          (*it)->isSpecialHitting = true;
         }
     }
 //check enemy dead
@@ -130,7 +156,7 @@ void GamePlay::update(float dt)
            player->updateHealth((*it)->getAttack());
         }
     }
-   for(auto it = bossArr.begin(); it != bossArr.end(); ++it)
+    for(auto it = bossArr.begin(); it != bossArr.end(); ++it)
     {
         if(Collision::GetInstance()->checkCollision(player->GetCollider()->Get(),(*it)->getAttackBox()) && !player->isHitting && !player->isDefending)
         {
@@ -152,37 +178,49 @@ void GamePlay::update(float dt)
   }
 // transition map
 if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP")){
-  if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920 )
+  if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920 && enemyArr.empty() && bossArr.empty() )
   {
        Engine::GetInstance()->setMap("MAP2");
        Collision::GetInstance()->init();
-       Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
+        for(int i=0;i<10;i++)
+  {
+      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+  }
+    Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
        player->m_Transform->X=50;
   }
 }
 else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP2"))
 {
-    if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920 )
+    if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920 && enemyArr.empty() && bossArr.empty())
   {
        Engine::GetInstance()->setMap("MAP3");
        Collision::GetInstance()->init();
+         for(int i=0;i<10;i++)
+  {
+      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+  }
         Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
-       player->m_Transform->X=50;
+        player->m_Transform->X=50;
   }
   if( player->GetTransform()->X>=0 && player->GetTransform()->X<=40 )
   {
        Engine::GetInstance()->setMap("MAP");
        Collision::GetInstance()->init();
+         for(int i=0;i<10;i++)
+  {
+      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+  }
         Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
        player->m_Transform->X=1820;
   }
 }
 else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP3"))
 {
-     if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920 )
+     if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920&& enemyArr.empty() && bossArr.empty() )
   {
-       Engine::GetInstance()->setMap("MAP4");
        Collision::GetInstance()->init();
+       bossArr.push_back(new Boss(new Properties("boss",1000,0,100,180)));
         Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
        player->m_Transform->X=50;
        player->m_Transform->Y=300;
@@ -211,12 +249,12 @@ else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP3"
   {
       if((*it) != nullptr )(*it)->Update(dt);
   }
+
 }
 
 void GamePlay::draw()
 {
    if(player!=nullptr) player->Draw();
-//   if(boss1!= nullptr) boss1->Draw();
     for(auto it = enemyArr.begin(); it != enemyArr.end();it++)
   {
       if((*it) != nullptr )(*it)->Draw();
@@ -230,10 +268,13 @@ void GamePlay::draw()
       if((*it) != nullptr )(*it)->Draw();
   }
 
+
 }
 
 void GamePlay::close()
 {
+    delete(player);
+    player=nullptr;
     for(auto it = enemyArr.begin(); it != enemyArr.end(); ++it)
     {
       delete (*it);
@@ -243,6 +284,7 @@ void GamePlay::close()
     }
     for(auto it = enemyAttack.begin(); it != enemyAttack.end(); ++it)
     {
+        delete (*it);
          (*it) = nullptr;
          enemyAttack.erase(it);
          --it;
@@ -256,6 +298,7 @@ void GamePlay::close()
     }
     for(auto it = bossAttack.begin(); it != bossAttack.end(); ++it)
     {
+        delete (*it);
          (*it) = nullptr;
          bossAttack.erase(it);
          --it;
