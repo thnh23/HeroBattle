@@ -20,14 +20,24 @@ class GamePlay
    void close();
    Knight* getKnight(){return player;}
    std::vector<Boss*> getBoss(){return bossArr;}
+  void addEnemy(int num)
+  {
+      for(int i=0;i<num;i++)
+      {
+            enemyArr.push_back(new Enemy(new Properties("enemy",rand()%1800+300,200,96,64)));
+      }
+  }
+
+
    int getNumCoin(){return CoinCount;}
    void setNumCoin(int x){CoinCount=x;}
    void updateCoin(int x){CoinCount-=x;}
-
+   int getEnemyKill(){return EnemyKill;}
 
     private:
     SDL_Color color{255,255,0};
     int CoinCount;
+    int EnemyKill;
      static GamePlay* m_Instance;
     Knight* player;
     std::vector<Enemy*> enemyArr ;

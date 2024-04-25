@@ -22,7 +22,8 @@ void InforState::render()
    TextureManager::GetInstance()->RenderText("MOVE LEFT/RIGHT: A/D",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2-200,50);
    TextureManager::GetInstance()->RenderText("JUMP: W",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2-100,50);
    TextureManager::GetInstance()->RenderText("ATTACK: J",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2,50);
-   TextureManager::GetInstance()->RenderText("DEFFEND: S",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2+100,50);
+   TextureManager::GetInstance()->RenderText("SKILL: K",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2+100,50);
+   TextureManager::GetInstance()->RenderText("DEFFEND: S",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2+200,50);
 
 }
 

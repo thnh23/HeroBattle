@@ -36,7 +36,11 @@ bool GameOverState::onEnter()
 {
     gameOverButton.push_back(new Button("homebutton",SCREEN_WIDTH/2-80,SCREEN_HEIGHT/2+50,64,60,1));
     gameOverButton.push_back(new Button("restartbutton",SCREEN_WIDTH/2+30,SCREEN_HEIGHT/2+50,63,60,1));
-return true;
+    m_LoseMusic = Mix_LoadWAV("Maps/kl-peach-game-over-iii-142453.mp3");
+    if(m_LoseMusic ==nullptr){ std::cout<<"nhot"<<std::endl;}
+    Mix_VolumeChunk(m_LoseMusic,40);
+    Mix_PlayChannel(1,m_LoseMusic,0);
+    return true;
 }
 
 bool GameOverState::onExit()
@@ -48,6 +52,7 @@ bool GameOverState::onExit()
          gameOverButton.erase(it);
          --it;
     }
+    Mix_FreeChunk(m_LoseMusic);
 return true;
 }
 

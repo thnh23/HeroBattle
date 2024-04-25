@@ -85,6 +85,7 @@ void ShopState::onMouseButtonUp(SDL_Event& e)
         {
          GamePlay::GetInstance()->updateCoin(10);
          GamePlay::GetInstance()->getKnight()->healing(20);
+         Mix_PlayChannel(-1,GamePlay::GetInstance()->getKnight()->m_UpdagreSound,0);
         }
     }
     if(shopButton[1]->checkCollision(Input::GetInstance()->getMousePos()))
@@ -93,6 +94,7 @@ void ShopState::onMouseButtonUp(SDL_Event& e)
         {
        GamePlay::GetInstance()->updateCoin(5);
         GamePlay::GetInstance()->getKnight()->updateAttack(3);
+         Mix_PlayChannel(-1,GamePlay::GetInstance()->getKnight()->m_UpdagreSound,0);
         }
     }
     if(shopButton[2]->checkCollision(Input::GetInstance()->getMousePos()))
@@ -101,6 +103,7 @@ void ShopState::onMouseButtonUp(SDL_Event& e)
         {
          GamePlay::GetInstance()->updateCoin(5);
          GamePlay::GetInstance()->getKnight()->updateDeffend(3);
+          Mix_PlayChannel(-1,GamePlay::GetInstance()->getKnight()->m_UpdagreSound,0);
         }
     }
     if(shopButton[3]->checkCollision(Input::GetInstance()->getMousePos()))

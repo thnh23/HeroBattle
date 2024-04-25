@@ -6,6 +6,7 @@
 #include"Button.h"
 #include<vector>
 
+
 class ShopState : public GameState
 {
     public:
@@ -24,6 +25,7 @@ class ShopState : public GameState
     private:
         static const std::string shopID;
        std::vector<Button*> shopButton;
+
 };
 
 #endif // SHOPSTATE_H

@@ -25,25 +25,19 @@ class GameStateMachine
               {
                      return;
               }
-//
-//       gameStates.push_back(state);
-//
-//       if (!gameStates.empty())
-//       {
-//              if (gameStates.back()->onExit())
-//              {
-//                gameStates.erase(gameStates.end() - 2);
-//              }
-//       }
-//
-//       gameStates.back()->onEnter();
-        if(gameStates.back()->onExit())
-        {
-            gameStates.erase(gameStates.end()-1);
-        }
-       }
+
        gameStates.push_back(state);
+
+       if (!gameStates.empty())
+       {
+              if (gameStates.back()->onExit())
+              {
+                gameStates.erase(gameStates.end() - 2);
+              }
+       }
+
        gameStates.back()->onEnter();
+       }
        }
        void popState()
        {

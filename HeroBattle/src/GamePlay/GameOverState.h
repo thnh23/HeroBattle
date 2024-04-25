@@ -7,6 +7,7 @@
 #include<string>
 #include"Button.h"
 #include<vector>
+#include"SDL_mixer.h"
 
 class GameOverState : public GameState
 {
@@ -26,6 +27,7 @@ class GameOverState : public GameState
     private:
         static const std::string gameOverID;
        std::vector<Button*> gameOverButton;
+       Mix_Chunk* m_LoseMusic;
 };
 
 
