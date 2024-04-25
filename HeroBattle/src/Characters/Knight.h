@@ -19,6 +19,7 @@ class Knight : public Character
     public:
 
      Knight(Properties* props);
+     virtual ~Knight(){}
       virtual void Draw();
       virtual void Update(float dt);
       virtual void Clean();
@@ -82,6 +83,7 @@ class Knight : public Character
       Mix_Chunk* m_UpdagreSound;
       Mix_Chunk* m_SpecialAttackSound;
       Mix_Chunk* m_HittingSound;
+      Mix_Chunk* m_JumpSound;
 };
 
 

@@ -13,11 +13,14 @@ Boss::Boss(Properties* props): Character(props)
     isDied = false;
     isHitting=false;
     isSpecialHitting=false;
+    isSpecialAtk=false;
    m_AttackTime = BOSS_ATTACK_TIME;
+   m_specialTime=3;
     m_Health = BOSS_HEALTH;
     m_CoolDown=0;
     m_Damage=10;
     m_Deffend=20;
+    m_energy=0;
 
     m_Collider = new Collider();
     m_Collider->SetBuffer(45,70,-60,-80);
@@ -27,6 +30,9 @@ Boss::Boss(Properties* props): Character(props)
 
     m_Animation = new Animation();
    m_Animation->setProps(m_TextureID,1,8,100);
+
+   m_SpecialAttackSound=Mix_LoadWAV("Maps/10_human_special_atk_1.wav");
+   m_AttackSound=Mix_LoadWAV("Maps/17_orc_atk_sword_3.wav");
 }
 
 void Boss::Draw()
@@ -38,14 +44,15 @@ void Boss::Draw()
        else
           m_Animation->Draw(m_Transform->X-80,m_Transform->Y,180,m_Height);
    }
+   else if(isSpecialAtk) m_Animation->Draw(m_Transform->X,m_Transform->Y,100,180);
    else if(isRunning) m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
    else  m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
  SDL_RenderFillRect(Engine::GetInstance()->getRenderer(),&health_box);
-//  Vector2D cam = Camera::GetInstance()->GetPos();
-//     SDL_Rect box = m_Collider->Get();
-//    box.x -= cam.X;
-//    box.y -= cam.Y;
-//    SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
+  Vector2D cam = Camera::GetInstance()->GetPos();
+    SDL_Rect box = m_Collider->Get();
+    box.x -= cam.X;
+    box.y -= cam.Y;
+    SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
 //    box = attack_box;
 //    box.x -= cam.X;
 //    box.y -= cam.Y;
@@ -54,25 +61,43 @@ void Boss::Draw()
 
 void Boss::Update(float dt)
 {
+     if(m_Health<0) m_Health=0;
      //health bar
     Vector2D cam = Camera::GetInstance()->GetPos();
     health_box={m_Transform->X-cam.X+20,m_Transform->Y-cam.Y+80,(float)m_Health/1000*50,5};
-   //
+   //  isSpecialAtk=true;
     isRunning=false;
  m_RigidBody->UnSetForce();
- if(m_Health<0) m_Health=0;
+
+ m_energy+=0.05;
+ if(m_energy>=100) m_energy=100;
 
 
-
-// if(m_Health<=0) isDied= true;
+if(m_energy==100 && (checkNearLeft(300) || checkNearRight(300)))
+{
+    m_RigidBody->UnSetForce();
+    m_energy-=100;
+    isSpecialAtk=true;
+    GamePlay::GetInstance()->addEnemy(5);
+     Mix_VolumeChunk(m_SpecialAttackSound,20);
+    Mix_PlayChannel(-1,m_SpecialAttackSound,0);
+}
+if(m_specialTime>0 && isSpecialAtk)
+{
+    m_specialTime-=dt;
+}else
+{
+    isSpecialAtk=false;
+    m_specialTime=3;
+}
 //Follow player
- if(checkNearLeft(300)&& !isAttacking)
+ if(checkNearLeft(300)&& !isAttacking && !isSpecialAtk)
  {
     m_Flip = SDL_FLIP_HORIZONTAL;
     m_RigidBody->ApplyForceX(2*BACKWARD);
     isRunning=true;
 
- }else if(checkNearRight(300) &&!isAttacking) {
+ }else if(checkNearRight(300) &&!isAttacking && !isSpecialAtk) {
    m_Flip = SDL_FLIP_NONE;
    m_RigidBody->ApplyForceX(2*FORWARD);
    isRunning=true;
@@ -83,6 +108,8 @@ void Boss::Update(float dt)
     {
         m_RigidBody->UnSetForce();
         m_Transform->X=m_LastSafePosition.X;
+         Mix_VolumeChunk(m_AttackSound,20);
+           Mix_PlayChannel(-1,m_AttackSound,0);
         if(m_CoolDown==0){
         isAttacking=true;
         m_CoolDown=2.5;
@@ -145,6 +172,7 @@ void Boss::AnimationState()
      m_Animation->setProps("boss",1,8,120,m_Flip);
      if(isRunning) m_Animation->setProps("boss_run",1,10,100,m_Flip);
       if(isAttacking) m_Animation->setProps("boss_attack",1,17,100,m_Flip);
+      if(isSpecialAtk) m_Animation->setProps("boss_special",1,19,100,m_Flip);
 }
 
 bool Boss::checkNearLeft(float distance)

@@ -5,6 +5,7 @@
 #include"Animation.h"
 #include"RigidBody.h"
 #include"Collider.h"
+#include"SDL_mixer.h"
 
 
 const int ENEMY_HEALTH=30;
@@ -62,6 +63,8 @@ class Enemy : public Character
       SDL_Rect attack_box;
       SDL_Rect health_box;
 
+      Mix_Chunk* m_AttackSound;
+      Mix_Chunk* m_DeadSound;
 };
 
 

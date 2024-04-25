@@ -25,8 +25,7 @@ Knight::Knight(Properties* props):Character(props)
     m_CoolDown=0;
     m_Deffend=0;
     m_Damage = 10;
-    m_energy = 100;
-    m_SpecialDamage=m_Damage*2;
+    m_energy = 70;
 
     m_Collider = new Collider();
      m_Collider->SetBuffer(20,12,-42,-15);
@@ -43,6 +42,7 @@ Knight::Knight(Properties* props):Character(props)
    m_UpdagreSound = Mix_LoadWAV("Maps/08_human_charge_1.wav");
    m_SpecialAttackSound = Mix_LoadWAV("Maps/10_human_special_atk_2.wav");
    m_HittingSound = Mix_LoadWAV("Maps/11_human_damage_1.wav");
+   m_JumpSound = Mix_LoadWAV("Maps/12_human_jump_1.wav");
 }
 
 void Knight::Draw()
@@ -69,6 +69,7 @@ void Knight::Update(float dt)
     isDefending=false;
     m_RigidBody->UnSetForce();
     m_RigidBody->UnSetFriction();
+    m_SpecialDamage=m_Damage*2;
 // setup
 if(m_Health<0) m_Health=0;
 if(m_Health>MAX_HEALTH) m_Health=MAX_HEALTH;
@@ -119,6 +120,7 @@ if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_K) && m_energy==100)
      m_RigidBody->UnSetForce();
      isSpecialAtk=true;
     m_energy-=100;
+     Mix_VolumeChunk(m_SpecialAttackSound,50);
      Mix_PlayChannel( -1, m_SpecialAttackSound, 0 );
      if(m_Flip==SDL_FLIP_NONE)
    {
@@ -149,6 +151,8 @@ if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_W) && isGround )
     isGround = false;
     isJumping=true;
     m_RigidBody->ApplyForceY(UPWARD*m_JumpForce);
+     Mix_VolumeChunk(m_JumpSound,20);
+     Mix_PlayChannel( -1, m_JumpSound, 0 );
 }
 if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_W) && isJumping && m_JumpTime>0)
 {
@@ -166,14 +170,6 @@ else
       isDefending =true;
       m_RigidBody->UnSetForce();
   }
-
-//  if(isDefending && m_DeffendTime>0)
-//    m_DeffendTime-=dt;
-//  else
-//  {
-//      m_DeffendTime = DEFFEND_TIME;
-//      isDefending=false;
-//  }
 
 //fall
    if(m_RigidBody->Velocity().Y>0 && !isGround)

@@ -6,7 +6,7 @@
 #include"Animation.h"
 #include"RigidBody.h"
 #include"Collider.h"
-
+#include"SDL_mixer.h"
 
 const int BOSS_HEALTH=1000;
 const float BOSS_ATTACK_TIME=1.5;
@@ -45,13 +45,15 @@ class Boss : public Character
      bool isHitting;
       bool isDied;
       bool isSpecialHitting;
-  //  int m_JumpTime;
+      bool isSpecialAtk;
      int m_Health;
      float m_AttackTime;
      float m_CoolDown;
      float m_DiedAnimation;
      int m_Damage;
      int m_Deffend;
+     float m_energy;
+     float m_specialTime;
 
 
 
@@ -61,6 +63,10 @@ class Boss : public Character
       Vector2D m_LastSafePosition;
       SDL_Rect attack_box;
       SDL_Rect health_box;
+
+      Mix_Chunk* m_AttackSound;
+      Mix_Chunk* m_SpecialAttackSound;
+
 };
 
 

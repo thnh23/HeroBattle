@@ -33,6 +33,9 @@ Enemy::Enemy(Properties* props):Character(props)
     m_Animation = new Animation();
    m_Animation->setProps(m_TextureID,1,8,100);
 
+   m_DeadSound=Mix_LoadWAV("Maps/24_orc_death_spin.wav");
+   m_AttackSound=Mix_LoadWAV("Maps/17_orc_atk_sword_1.wav");
+
 }
 
 void Enemy::Draw()
@@ -53,15 +56,14 @@ void Enemy::Draw()
 
 void Enemy::Update(float dt)
 {
+    if(m_Health<0) m_Health=0;
     //health bar
     Vector2D cam = Camera::GetInstance()->GetPos();
    health_box={m_Transform->X-cam.X+30,m_Transform->Y-cam.Y+10,m_Health,4};
    //
     isRunning=false;
  m_RigidBody->UnSetForce();
- if(m_Health<0) m_Health=0;
-//
-// if(m_Health<=0) isDied= true;
+
 //Follow player
  if(checkNearLeft(200)&& !isAttacking)
  {
@@ -75,30 +77,13 @@ void Enemy::Update(float dt)
    isRunning=true;
  }
 
-// if((checkNearLeft()||checkNearRight())&&m_Collider->Get().y+ m_Collider->Get().h >= GamePlay::GetInstance()->getKnight()->GetCollider()->Get().y+GamePlay::GetInstance()->getKnight()->GetCollider()->Get().h && isGround)
-// {
-//    std::cout<<m_Collider->Get().y+ m_Collider->Get().h<<" "<< GamePlay::GetInstance()->getKnight()->GetCollider()->Get().y+GamePlay::GetInstance()->getKnight()->GetCollider()->Get().h<<std::endl;
-//    isGround=false;
-//    isJumping=true;
-//    m_RigidBody->ApplyForceY(10*UPWARD);
-// }
-//
-// if( (checkNearLeft()||checkNearRight()) &&m_Collider->Get().y+ m_Collider->Get().h>= GamePlay::GetInstance()->getKnight()->GetCollider()->Get().y+GamePlay::GetInstance()->getKnight()->GetCollider()->Get().h&& isJumping && m_JumpTime>0)
-//{
-//    m_JumpTime-=dt;
-//     m_RigidBody->ApplyForceY(UPWARD*10);
-//}
-//else
-//{
-//    m_JumpTime=JUMP_TIME_ENEMY;
-//    isJumping=false;
-//}
-
  //attack
     if(Collision::GetInstance()->checkCollision(GamePlay::GetInstance()->getKnight()->GetCollider()->Get(),m_Collider->Get()) )
     {
         m_RigidBody->UnSetForce();
         m_Transform->X=m_LastSafePosition.X;
+         Mix_VolumeChunk(m_AttackSound,20);
+        Mix_PlayChannel(-1,m_AttackSound,0);
         if(m_CoolDown==0){
         isAttacking=true;
         m_CoolDown=2;
@@ -120,8 +105,16 @@ else
     m_AttackTime=ENEMY_ATTACK_TIME;
 }
 
- if(isHitting) m_RigidBody->UnSetForce();
- if(isDied) m_RigidBody->UnSetForce();
+ if(isHitting)
+ {
+     m_RigidBody->UnSetForce();
+ }
+ if(isDied)
+ {
+     m_RigidBody->UnSetForce();
+     Mix_VolumeChunk(m_DeadSound,20);
+     Mix_PlayChannel(-1,m_DeadSound,0);
+ }
 //set time
 
 //update
