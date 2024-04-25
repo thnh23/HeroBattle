@@ -13,14 +13,14 @@ class HUD
       void  updateHUD();
     void  drawHUD();
     Timer* getTimer(){return &m_Timer;}
+      std::string time;
    private:
          int coin;
          int health;
          static HUD* m_Instance;
         Timer m_Timer;
-        int minute, second;
-        std::string time;
         float energy;
+          int minute, second;
 };
 
 #endif // HUD_H

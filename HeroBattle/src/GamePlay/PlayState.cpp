@@ -44,7 +44,6 @@ bool PlayState::onEnter()
     Input::GetInstance()->reset();
     playButton.push_back( new Button("shopbutton",SCREEN_WIDTH-150,5,64,60,1));
     playButton.push_back( new Button("settingbutton",SCREEN_WIDTH-70,5,63,60,1));
-    std::cout << "entering PlayState..." << std::endl;
     return true;
 }
 
@@ -57,7 +56,6 @@ bool PlayState::onExit()
          playButton.erase(it);
          --it;
     }
-        std::cout << "exiting PlayState..." << std::endl;
         return true;
 }
 

@@ -48,11 +48,11 @@ void Boss::Draw()
    else if(isRunning) m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
    else  m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
  SDL_RenderFillRect(Engine::GetInstance()->getRenderer(),&health_box);
-  Vector2D cam = Camera::GetInstance()->GetPos();
-    SDL_Rect box = m_Collider->Get();
-    box.x -= cam.X;
-    box.y -= cam.Y;
-    SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
+//  Vector2D cam = Camera::GetInstance()->GetPos();
+//    SDL_Rect box = m_Collider->Get();
+//    box.x -= cam.X;
+//    box.y -= cam.Y;
+//    SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
 //    box = attack_box;
 //    box.x -= cam.X;
 //    box.y -= cam.Y;
@@ -131,7 +131,6 @@ else
     m_AttackTime=BOSS_ATTACK_TIME;
 }
 
- if(isHitting) m_RigidBody->UnSetForce();
  if(isDied) m_RigidBody->UnSetForce();
 //set time
 

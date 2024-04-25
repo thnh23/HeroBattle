@@ -8,8 +8,8 @@ class Animation
   Animation(){}
   void Update();
   void Draw(float x, float y, int spriteWidth, int SpriteHeight);
+  void DrawNoCamera(float x, float y, int spriteWidth, int SpriteHeight);
   void setProps(std::string textureID, int spriteRow, int frame, int animSpeed, SDL_RendererFlip flip =SDL_FLIP_NONE);
-  // void check();
 
 private:
 int  m_SpriteRow, m_SpriteFrame;

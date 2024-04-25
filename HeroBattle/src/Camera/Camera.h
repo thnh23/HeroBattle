@@ -13,7 +13,7 @@ class Camera
       inline SDL_Rect GetViewBox(){return m_ViewBox;}
       inline Vector2D GetPos(){return m_Position;}
       inline void  SetTarget(Point* target) { m_Target = target;}
-      void Update(float dt);
+      void Update();
     private:
          Camera(){m_ViewBox ={0,0,SCREEN_WIDTH,SCREEN_HEIGHT};}
 

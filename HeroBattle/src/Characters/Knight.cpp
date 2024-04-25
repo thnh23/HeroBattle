@@ -20,12 +20,12 @@ Knight::Knight(Properties* props):Character(props)
     m_AttackTime=ATTACK_TIME;
     m_Health =MAX_HEALTH;
     m_DiedAnimation= 1.5;
-    m_SpecialAnimation=1.5;
+    m_SpecialAnimation=3;
 
     m_CoolDown=0;
     m_Deffend=0;
     m_Damage = 10;
-    m_energy = 70;
+    m_energy = 0;
 
     m_Collider = new Collider();
      m_Collider->SetBuffer(20,12,-42,-15);
@@ -50,11 +50,11 @@ void Knight::Draw()
     m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
     if(isSpecialAtk) specialAnimation->Draw(special_attack_box.x,special_attack_box.y,82,48);
 
- Vector2D cam = Camera::GetInstance()->GetPos();
-   SDL_Rect box = special_attack_box;
-   box.x -= cam.X;
-   box.y -= cam.Y;
-       SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
+// Vector2D cam = Camera::GetInstance()->GetPos();
+//   SDL_Rect box = special_attack_box;
+//   box.x -= cam.X;
+//   box.y -= cam.Y;
+//       SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
 //  box = attack_box;
 //  box.x -= cam.X;
 //   box.y -= cam.Y;
@@ -124,17 +124,19 @@ if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_K) && m_energy==100)
      Mix_PlayChannel( -1, m_SpecialAttackSound, 0 );
      if(m_Flip==SDL_FLIP_NONE)
    {
+       isLeft=false;
        special_attack_box={m_Transform->X+60,m_Transform->Y+15,m_Width,m_Height-15};
    }
    else
    {
+       isLeft=true;
        special_attack_box={m_Transform->X-5,m_Transform->Y+15,m_Width,m_Height-15};
    }
  }
 if(isSpecialAtk&& m_SpecialAnimation>0)
 {
     m_SpecialAnimation-=dt;
-    if(m_Flip==SDL_FLIP_NONE)
+    if(!isLeft)
     {
         special_attack_box.x+=4;
     }else special_attack_box.x-=4;
@@ -143,7 +145,7 @@ else
 {
     special_attack_box={0,0,0,0};
     isSpecialAtk=false;
-    m_SpecialAnimation=1.5;
+    m_SpecialAnimation=3;
 }
 //jump
 if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_W) && isGround )

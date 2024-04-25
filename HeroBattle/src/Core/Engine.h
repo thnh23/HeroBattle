@@ -7,6 +7,8 @@
 #include"GameMap.h"
 #include"SDL_ttf.h"
 #include"GameStateMachine.h"
+#include"MapParser.h"
+#include "SDL_mixer.h"
 
 const int SCREEN_WIDTH = 960;
 const int SCREEN_HEIGHT = 640;
@@ -29,10 +31,12 @@ class Engine
    void Render();
    void Events();
    inline GameMap* GetMap(){return m_LevelMap;}
+   inline void setMap(std::string id){m_LevelMap= MapParser::GetInstance()->GetMap(id);}
    inline bool IsRunning(){return m_IsRunning;}
    inline SDL_Renderer* getRenderer(){return m_Renderer;}
    inline TTF_Font* getFont(){return m_Font;}
    inline GameStateMachine* getStateMachine() { return gameStateMachine; }
+   inline Mix_Music* getMusic(){return m_Music;}
 
   private:
     Engine(){};
@@ -43,6 +47,7 @@ class Engine
     SDL_Renderer* m_Renderer;
     TTF_Font* m_Font;
     GameStateMachine* gameStateMachine;
+    Mix_Music* m_Music;
 
 };
 

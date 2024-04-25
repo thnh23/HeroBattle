@@ -471,24 +471,24 @@
 1710572764 d:\sdl\letdoit\optimusprime\src\physics\point.h
 	<iostream>
 
-1710438874 source:d:\sdl\letdoit\herobattle\src\animation\animation.cpp
+1713898739 source:d:\sdl\letdoit\herobattle\src\animation\animation.cpp
 	"Animation.h"
 	"TextureManager.h"
 	<iostream>
 
-1710439868 d:\sdl\letdoit\herobattle\src\animation\animation.h
+1713898728 d:\sdl\letdoit\herobattle\src\animation\animation.h
 	<string>
 	"SDL.h"
 
-1710519723 d:\sdl\letdoit\herobattle\src\graphics\texturemanager.h
+1712803356 d:\sdl\letdoit\herobattle\src\graphics\texturemanager.h
 	<string>
 	"SDL.h"
 	<map>
 
-1710599370 source:d:\sdl\letdoit\herobattle\src\camera\camera.cpp
+1713433776 source:d:\sdl\letdoit\herobattle\src\camera\camera.cpp
 	"Camera.h"
 
-1710599267 d:\sdl\letdoit\herobattle\src\camera\camera.h
+1712073797 d:\sdl\letdoit\herobattle\src\camera\camera.h
 	"Point.h"
 	"Vector2D.h"
 	"SDL.h"
@@ -497,10 +497,10 @@
 1710572764 d:\sdl\letdoit\herobattle\src\physics\point.h
 	<iostream>
 
-1710438289 d:\sdl\letdoit\herobattle\src\physics\vector2d.h
+1712680633 d:\sdl\letdoit\herobattle\src\physics\vector2d.h
 	<iostream>
 
-1711563241 source:d:\sdl\letdoit\herobattle\src\characters\knight.cpp
+1714073450 source:d:\sdl\letdoit\herobattle\src\characters\knight.cpp
 	"Knight.h"
 	"TextureManager.h"
 	"SDL.h"
@@ -508,17 +508,20 @@
 	"Engine.h"
 	"Camera.h"
 	"Collision.h"
+	"GamePlay.h"
 
-1711563460 d:\sdl\letdoit\herobattle\src\characters\knight.h
+1714079450 d:\sdl\letdoit\herobattle\src\characters\knight.h
 	"Character.h"
 	"Animation.h"
 	"RigidBody.h"
 	"Collider.h"
+	"SDL_mixer.h"
 
-1710440517 d:\sdl\letdoit\herobattle\src\characters\character.h
+1712048796 d:\sdl\letdoit\herobattle\src\characters\character.h
 	"GameObject.h"
+	"SDL.h"
 
-1710599224 d:\sdl\letdoit\herobattle\src\object\gameobject.h
+1714036402 d:\sdl\letdoit\herobattle\src\object\gameobject.h
 	"Transform.h"
 	"SDL.h"
 	"Point.h"
@@ -531,31 +534,42 @@
 1711380313 d:\sdl\letdoit\herobattle\src\physics\rigidbody.h
 	"Vector2D.h"
 
-1711562275 d:\sdl\letdoit\herobattle\src\inputs\input.h
+1713969275 d:\sdl\letdoit\herobattle\src\inputs\input.h
 	"SDL.h"
+	"Vector2D.h"
+	<vector>
+	<iostream>
 
-1711563622 source:d:\sdl\letdoit\herobattle\src\core\engine.cpp
+1714079321 source:d:\sdl\letdoit\herobattle\src\core\engine.cpp
 	"Engine.h"
 	"TextureManager.h"
-	"Knight.h"
 	"Input.h"
-	"SDL.h"
 	<iostream>
 	"MapParser.h"
 	"Camera.h"
+	"GamePlay.h"
+	"HUD.h"
+	"Button.h"
+	"MenuState.h"
+	"GameOverState.h"
+	"GameWin.h"
 
-1711204056 d:\sdl\letdoit\herobattle\src\core\engine.h
+1714064768 d:\sdl\letdoit\herobattle\src\core\engine.h
 	"SDL.h"
 	"SDL_image.h"
 	"GameMap.h"
+	"SDL_ttf.h"
+	"GameStateMachine.h"
+	"MapParser.h"
+	"SDL_mixer.h"
 
-1710439360 d:\sdl\letdoit\herobattle\src\map\gamemap.h
+1713110587 d:\sdl\letdoit\herobattle\src\map\gamemap.h
 	<vector>
 	"Layer.h"
 
 1710439257 d:\sdl\letdoit\herobattle\src\map\layer.h
 
-1710510508 d:\sdl\letdoit\herobattle\src\map\mapparser.h
+1712603132 d:\sdl\letdoit\herobattle\src\map\mapparser.h
 	<map>
 	<string>
 	"GameMap.h"
@@ -582,20 +596,24 @@
 	<assert.h>
 	<string.h>
 
-1711563429 source:d:\sdl\letdoit\herobattle\src\graphics\texturemanager.cpp
+1713344267 source:d:\sdl\letdoit\herobattle\src\graphics\texturemanager.cpp
 	"TextureManager.h"
 	"Engine.h"
 	<iostream>
 	"Camera.h"
 
-1711530500 source:d:\sdl\letdoit\herobattle\src\inputs\input.cpp
+1713969275 source:d:\sdl\letdoit\herobattle\src\inputs\input.cpp
 	"Input.h"
 	"Engine.h"
 
-1710440839 source:d:\sdl\letdoit\herobattle\src\main.cpp
+1713111393 source:d:\sdl\letdoit\herobattle\src\main.cpp
 	"Engine.h"
+	<stdlib.h>
+	<ctime>
+	"Timer.h"
+	<iostream>
 
-1710521647 source:d:\sdl\letdoit\herobattle\src\map\mapparser.cpp
+1712603081 source:d:\sdl\letdoit\herobattle\src\map\mapparser.cpp
 	"MapParser.h"
 
 1710521032 source:d:\sdl\letdoit\herobattle\src\map\tilelayer.cpp
@@ -626,22 +644,673 @@
 
 1710600884 d:\sdl\letdoit\herobattle\physics\collision.h
 
-1711378102 d:\sdl\letdoit\herobattle\src\physics\collider.h
+1711724838 d:\sdl\letdoit\herobattle\src\physics\collider.h
 	"SDL.h"
 
-1711386429 source:d:\sdl\letdoit\herobattle\src\physics\collision.cpp
+1713511524 source:d:\sdl\letdoit\herobattle\src\physics\collision.cpp
 	"Collision.h"
 	"Engine.h"
 	<iostream>
 
-1710748731 d:\sdl\letdoit\herobattle\src\physics\collision.h
+1713511278 d:\sdl\letdoit\herobattle\src\physics\collision.h
 	"SDL.h"
 	<vector>
 	"TileLayer.h"
 	"GameMap.h"
 
-1711388019 source:d:\sdl\letdoit\herobattle\src\characters\enemy.cpp
+1714077174 source:d:\sdl\letdoit\herobattle\src\characters\enemy.cpp
 	"Enemy.h"
+	"TextureManager.h"
+	"SDL.h"
+	<iostream>
+	"Collision.h"
+	"GamePlay.h"
+	"Camera.h"
 
-1711388019 d:\sdl\letdoit\herobattle\src\characters\enemy.h
+1714073743 d:\sdl\letdoit\herobattle\src\characters\enemy.h
+	"Character.h"
+	"Animation.h"
+	"RigidBody.h"
+	"Collider.h"
+	"SDL_mixer.h"
+
+1714079407 source:d:\sdl\letdoit\herobattle\src\gameplay\gameplay.cpp
+	"GamePlay.h"
+	"Engine.h"
+	"Collision.h"
+	<iostream>
+	"GameObject.h"
+	"TextureManager.h"
+	"Input.h"
+	<string>
+	"LoadingState.h"
+
+1714067531 d:\sdl\letdoit\herobattle\src\gameplay\gameplay.h
+	"Knight.h"
+	"Enemy.h"
+	<vector>
+	"Vector2D.h"
+	"Item.h"
+	"Boss.h"
+
+1714078902 source:d:\sdl\letdoit\herobattle\src\graphics\hud.cpp
+	"HUD.h"
+	"GamePlay.h"
+	<stdio.h>
+	"SDL.h"
+	"SDL_image.h"
+	"Engine.h"
+	"Timer.h"
+
+1714077362 d:\sdl\letdoit\herobattle\src\graphics\hud.h
+	"Timer.h"
+
+1713549807 source:d:\sdl\letdoit\herobattle\src\timer\timer.cpp
+	"Timer.h"
+	"SDL.h"
+
+1713549799 d:\sdl\letdoit\herobattle\src\timer\timer.h
+	<iostream>
+	"SDL.h"
+
+1712425088 d:\sdl\letdoit\herobattle\src\object\coin.h
+	"Item.h"
+
+1714060658 d:\sdl\letdoit\herobattle\src\object\item.h
+	"GameObject.h"
+	"TextureManager.h"
+	"Collider.h"
+	"Camera.h"
+	"Collider.h"
+	"RigidBody.h"
+	"Collision.h"
+	"SDL_mixer.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_guid.h"
+	"SDL_haptic.h"
+	"SDL_hidapi.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+	<winsdkver.h>
+	<sdkddkver.h>
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_platform.h
+	<AvailabilityMacros.h>
+	<TargetConditionals.h>
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\begin_code.h
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\close_code.h
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_assert.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<endian.h>
+	<endian.h>
+	<sys/endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<arm_neon.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<lsxintrin.h>
+	<lasxintrin.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_guid.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_guid.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_hidapi.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_metal.h
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_locale.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1698944750 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_misc.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1704144973 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1709660555 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1712605271 source:d:\sdl\letdoit\herobattle\statemachine.cpp
+	"StateMachine.h"
+
+1712605284 d:\sdl\letdoit\herobattle\statemachine.h
+	"SDL.h"
+
+1712605271 source:d:\sdl\letdoit\herobattle\src\gameplay\statemachine.cpp
+	"StateMachine.h"
+
+1712605284 d:\sdl\letdoit\herobattle\src\gameplay\statemachine.h
+	"SDL.h"
+
+1714066377 d:\sdl\letdoit\herobattle\src\graphics\button.h
+	"Input.h"
+	"TextureManager.h"
+	"SDL_mixer.h"
+
+1714035717 d:\sdl\letdoit\herobattle\src\gameplay\gamestatemachine.h
+	"GameState.h"
+	<vector>
+	"SDL.h"
+
+1714066569 d:\sdl\letdoit\herobattle\src\gameplay\gamestate.h
+	<string>
+	"SDL.h"
+	"SDL_mixer.h"
+
+1714079133 source:d:\sdl\letdoit\herobattle\src\gameplay\menustate.cpp
+	"MenuState.h"
+	<iostream>
+	"Engine.h"
+	"GameStateMachine.h"
+	"Button.h"
+	"PlayState.h"
+	"GamePlay.h"
+	"HUD.h"
+	"InforState.h"
+	"LoadingState.h"
+
+1713115798 d:\sdl\letdoit\herobattle\src\gameplay\menustate.h
+	"GameState.h"
+	<string>
+	"Button.h"
+	<vector>
+
+1714077150 source:d:\sdl\letdoit\herobattle\src\gameplay\playstate.cpp
+	"PlayState.h"
+	<iostream>
+	"Engine.h"
+	"GameStateMachine.h"
+	"Button.h"
+	"Camera.h"
+	"HUD.h"
+	"GamePlay.h"
+	"ResumeState.h"
+	"ShopState.h"
+	"GameOverState.h"
+	"GameWin.h"
+
+1713115798 d:\sdl\letdoit\herobattle\src\gameplay\playstate.h
+	"GameState.h"
+	<string>
+	<vector>
+	"Button.h"
+
+1713973487 source:d:\sdl\letdoit\herobattle\src\gameplay\resumestate.cpp
+	"ResumeState.h"
+	"Button.h"
+	"Engine.h"
+	"GamePlay.h"
+	"HUD.h"
+	"GameStateMachine.h"
+	"PlayState.h"
+	"MenuState.h"
+	"LoadingState.h"
+
+1713115798 d:\sdl\letdoit\herobattle\src\gameplay\resumestate.h
+	"GameState.h"
+	<string>
+	"Button.h"
+	<vector>
+
+1714078836 source:d:\sdl\letdoit\herobattle\src\gameplay\shopstate.cpp
+	"ShopState.h"
+	"Engine.h"
+	"GamePlay.h"
+	"HUD.h"
+	"GameStateMachine.h"
+	"Button.h"
+	"PlayState.h"
+	"GameOverState.h"
+	"GameWin.h"
+
+1714066377 d:\sdl\letdoit\herobattle\src\gameplay\shopstate.h
+	"GameState.h"
+	<string>
+	"Button.h"
+	<vector>
+
+1713115798 d:\sdl\letdoit\herobattle\src\gameplay\inforstate.h
+	"GameState.h"
+	<string>
+	"Button.h"
+	<vector>
+
+1714073027 source:d:\sdl\letdoit\herobattle\src\gameplay\inforstate.cpp
+	"InforState.h"
+	"Engine.h"
+	"MenuState.h"
+	"Button.h"
+
+1714067380 source:d:\sdl\letdoit\herobattle\src\gameplay\gameoverstate.cpp
+	"GameOverState.h"
+	<string>
+	"Engine.h"
+	"Button.h"
+	"GameStateMachine.h"
+	"PlayState.h"
+	"MenuState.h"
+	"HUD.h"
+	"GamePlay.h"
+
+1714061910 d:\sdl\letdoit\herobattle\src\gameplay\gameoverstate.h
+	"GameState.h"
+	<string>
+	"Button.h"
+	<vector>
+	"SDL_mixer.h"
+
+1714073355 source:d:\sdl\letdoit\herobattle\src\characters\boss.cpp
+	"Boss.h"
+	"TextureManager.h"
+	"SDL.h"
+	<iostream>
+	"Collision.h"
+	"GamePlay.h"
+	"Camera.h"
+
+1714059086 d:\sdl\letdoit\herobattle\src\characters\boss.h
+	"Character.h"
+	"Animation.h"
+	"RigidBody.h"
+	"Collider.h"
+	"SDL_mixer.h"
+
+1709660478 d:\mingw_dev_lib\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1714077393 source:d:\sdl\letdoit\herobattle\src\gameplay\gamewin.cpp
+	"GameWin.h"
+	<string>
+	"Engine.h"
+	"Button.h"
+	"GameStateMachine.h"
+	"PlayState.h"
+	"MenuState.h"
+	"HUD.h"
+	"GamePlay.h"
+
+1714061669 d:\sdl\letdoit\herobattle\src\gameplay\gamewin.h
+	"GameState.h"
+	<string>
+	"Button.h"
+	<vector>
+	"SDL_mixer.h"
+
+1713967956 source:d:\sdl\letdoit\herobattle\src\gameplay\loadingstate.cpp
+	"LoadingState.h"
+	"Engine.h"
+	"TextureManager.h"
+	"PlayState.h"
+	"GamePlay.h"
+
+1713898166 d:\sdl\letdoit\herobattle\src\gameplay\loadingstate.h
+	"GameState.h"
+	<string>
+	"Animation.h"
 

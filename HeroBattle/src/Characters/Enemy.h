@@ -8,7 +8,6 @@
 #include"SDL_mixer.h"
 
 
-const int ENEMY_HEALTH=30;
 const float ENEMY_ATTACK_TIME=1.5;
 
 
@@ -28,7 +27,7 @@ class Enemy : public Character
 
       bool checkNearLeft(float distance);
       bool checkNearRight(float distance);
-
+       void setHealth(float health){m_Health=health;}
        int getHealth(){return m_Health;}
        void updateHealth(int damage){m_Health-=damage;}
         int getAttack(){return m_Damage;}

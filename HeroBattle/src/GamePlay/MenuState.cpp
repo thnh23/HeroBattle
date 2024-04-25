@@ -35,7 +35,6 @@ bool MenuState::onEnter()
     menuButton.push_back( new Button("playbutton",SCREEN_WIDTH/2-74,SCREEN_HEIGHT/2,127,60,1));
     menuButton.push_back(  new Button("inforbutton",SCREEN_WIDTH/2-74,SCREEN_HEIGHT/2+85,127,60,1));
     menuButton.push_back( new Button("closebutton",SCREEN_WIDTH/2-74,SCREEN_HEIGHT/2+170,127,60,1));
-     std::cout<<"entering MenuState.."<<std::endl;
     return true;
 }
 
@@ -48,7 +47,6 @@ bool MenuState::onExit()
          menuButton.erase(it);
          --it;
     }
-       std::cout << "exiting MenuState..." << std::endl;
        return true;
 }
 

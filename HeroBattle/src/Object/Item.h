@@ -8,6 +8,7 @@
 #include"Collider.h"
 #include"RigidBody.h"
 #include"Collision.h"
+#include"SDL_mixer.h"
 class Item : public GameObject
 {
 public:
@@ -28,11 +29,11 @@ public:
     {
         m_Animation->Draw(m_Transform->X,m_Transform->Y,m_Width,m_Height);
 
-        Vector2D cam = Camera::GetInstance()->GetPos();
-        SDL_Rect box = m_Collider->Get();
-        box.x -= cam.X;
-        box.y -= cam.Y;
-        SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
+//        Vector2D cam = Camera::GetInstance()->GetPos();
+//        SDL_Rect box = m_Collider->Get();
+//        box.x -= cam.X;
+//        box.y -= cam.Y;
+//        SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(),&box);
     };
     virtual void Update(float dt)
     {
@@ -71,7 +72,8 @@ public:
     Animation* m_Animation;
     RigidBody* m_RigidBody;
     Vector2D m_LastSafePosition;
-
+   virtual ~Item(){}
+   Mix_Chunk* m_CoinSound = Mix_LoadWAV("Maps/collect-points-190037.mp3");
 };
 
 #endif // ITEM_H

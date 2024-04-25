@@ -19,11 +19,13 @@ void InforState::render()
   closeInfor->draw();
 
    TextureManager::GetInstance()->DrawFrameNoCamera("resume_border",SCREEN_WIDTH/2-300,SCREEN_HEIGHT/2-300,600,600,1,0);
-   TextureManager::GetInstance()->RenderText("MOVE LEFT/RIGHT: A/D",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2-200,50);
+   TextureManager::GetInstance()->RenderText("INTRODUCTION",{255,255,255},SCREEN_WIDTH/2-100,SCREEN_HEIGHT/2-200,50);
+   TextureManager::GetInstance()->RenderText("MOVE LEFT/RIGHT: A/D",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2-150,50);
    TextureManager::GetInstance()->RenderText("JUMP: W",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2-100,50);
-   TextureManager::GetInstance()->RenderText("ATTACK: J",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2,50);
-   TextureManager::GetInstance()->RenderText("SKILL: K",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2+100,50);
-   TextureManager::GetInstance()->RenderText("DEFFEND: S",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2+200,50);
+   TextureManager::GetInstance()->RenderText("ATTACK: J",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2-50,50);
+   TextureManager::GetInstance()->RenderText("SKILL: K",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2,50);
+   TextureManager::GetInstance()->RenderText("DEFFEND: S",{255,255,255},SCREEN_WIDTH/2-200,SCREEN_HEIGHT/2+50,50);
+    TextureManager::GetInstance()->RenderText("ENJOY THE GAME",{255,255,255},SCREEN_WIDTH/2-100,SCREEN_HEIGHT/2+100,50);
 
 }
 

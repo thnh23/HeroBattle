@@ -1,9 +1,9 @@
 #include "MapParser.h"
 
 MapParser* MapParser::m_Instance =nullptr;
-bool MapParser::Load()
+bool MapParser::Load(std::string path, std::string mapName)
 {
-  return  Parse("MAP","Maps/Map.tmx");
+  return  Parse(mapName,path);
 }
 
 

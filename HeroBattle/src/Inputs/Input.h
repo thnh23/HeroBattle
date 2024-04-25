@@ -30,8 +30,9 @@ Vector2D* getMousePos()
 void reset();
 
 
+
   private:
-     Input();
+     Input(){};
       static Input* m_Instance;
 
       //keyboard
@@ -41,9 +42,9 @@ void reset();
 
 Vector2D* mPos;
 
-void onMouseMove(SDL_Event& e);
-void onMouseButtonDown(SDL_Event& e);
-void onMouseButtonUp(SDL_Event& e);
+void onMouseMove(SDL_Event* e);
+void onMouseButtonDown(SDL_Event* e);
+void onMouseButtonUp(SDL_Event* e);
 
 };
 

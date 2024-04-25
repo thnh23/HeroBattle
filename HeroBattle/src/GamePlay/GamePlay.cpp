@@ -13,27 +13,26 @@ GamePlay* GamePlay::m_Instance = nullptr;
 
 void GamePlay::init()
 {
-     Engine::GetInstance()->setMap("MAP5");
-       Collision::GetInstance()->init();
-  player = new Knight(new Properties("knight",50,350,72,86));
-
+     Engine::GetInstance()->setMap("MAP1");
+    Collision::GetInstance()->init();
+  player = new Knight(new Properties("knight",50,300,72,86));
   for(auto it = enemyArr.begin(); it != enemyArr.end(); ++it)
     {
-      delete (*it);
+        delete (*it);
          (*it) = nullptr;
          enemyArr.erase(it);
          --it;
     }
     for(auto it = bossArr.begin(); it != bossArr.end(); ++it)
     {
-      delete (*it);
+        delete (*it);
          (*it) = nullptr;
          bossArr.erase(it);
          --it;
     }
     for(auto it = ItemArr.begin(); it != ItemArr.end(); ++it)
     {
-      delete (*it);
+         delete (*it);
          (*it) = nullptr;
          ItemArr.erase(it);
          --it;
@@ -41,14 +40,15 @@ void GamePlay::init()
 
    for(int i=0;i<10;i++)
   {
-      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,400,96,64)));
+      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
   }
 }
 
 void GamePlay::update(float dt)
 {
     // transition map
-if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP")){
+if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP1"))
+{
   if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920 && enemyArr.empty() && bossArr.empty() )
   {
        Engine::GetInstance()->setMap("MAP2");
@@ -56,11 +56,20 @@ if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP")){
         for(int i=0;i<10;i++)
   {
       enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+      enemyArr.back()->setHealth(40);
   }
+   for(auto it = ItemArr.begin(); it != ItemArr.end(); ++it)
+    {
+      delete (*it);
+         (*it) = nullptr;
+         ItemArr.erase(it);
+         --it;
+    }
     Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
        player->m_Transform->X=50;
   }
 }
+
 else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP2"))
 {
     if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920 && enemyArr.empty() && bossArr.empty())
@@ -70,22 +79,20 @@ else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP2"
          for(int i=0;i<10;i++)
   {
       enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+       enemyArr.back()->setHealth(50);
   }
+   for(auto it = ItemArr.begin(); it != ItemArr.end(); ++it)
+    {
+      delete (*it);
+         (*it) = nullptr;
+         ItemArr.erase(it);
+         --it;
+    }
         Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
         player->m_Transform->X=50;
   }
-  if( player->GetTransform()->X>=0 && player->GetTransform()->X<=40 )
-  {
-       Engine::GetInstance()->setMap("MAP");
-       Collision::GetInstance()->init();
-         for(int i=0;i<10;i++)
-  {
-      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
-  }
-        Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
-       player->m_Transform->X=1820;
-  }
 }
+
 else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP3"))
 {
      if( player->GetTransform()->X>=1832 && player->GetTransform()->X<=1920&& enemyArr.empty() && bossArr.empty() )
@@ -95,17 +102,18 @@ else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP3"
        for(int i=0;i<10;i++)
   {
       enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+       enemyArr.back()->setHealth(60);
   }
+   for(auto it = ItemArr.begin(); it != ItemArr.end(); ++it)
+    {
+      delete (*it);
+         (*it) = nullptr;
+         ItemArr.erase(it);
+         --it;
+    }
         Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
-       player->m_Transform->X=50;
+       player->m_Transform->X=60;
        player->m_Transform->Y=300;
-  }
-  if( player->GetTransform()->X>=0 && player->GetTransform()->X<=20 )
-  {
-       Engine::GetInstance()->setMap("MAP2");
-       Collision::GetInstance()->init();
-        Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
-       player->m_Transform->X=1820;
   }
 }
 else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP4"))
@@ -115,16 +123,21 @@ else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP4"
       Engine::GetInstance()->setMap("MAP5");
        Collision::GetInstance()->init();
        bossArr.push_back(new Boss(new Properties("boss",1000,0,100,180)));
+        for(int i=0;i<3;i++)
+  {
+      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+       enemyArr.back()->setHealth(60);
+  }
+   for(auto it = ItemArr.begin(); it != ItemArr.end(); ++it)
+    {
+      delete (*it);
+         (*it) = nullptr;
+         ItemArr.erase(it);
+         --it;
+    }
         Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
        player->m_Transform->X=50;
        player->m_Transform->Y=300;
-  }
-  if( player->GetTransform()->X>=0 && player->GetTransform()->X<=20 )
-  {
-       Engine::GetInstance()->setMap("MAP3");
-       Collision::GetInstance()->init();
-        Engine::GetInstance()->getStateMachine()->changeState(new LoadingState());
-       player->m_Transform->X=1820;
   }
 }
 

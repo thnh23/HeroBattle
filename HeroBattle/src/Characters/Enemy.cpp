@@ -18,10 +18,10 @@ Enemy::Enemy(Properties* props):Character(props)
    isHitting=false;
    isSpecialHitting=false;
    m_AttackTime = ENEMY_ATTACK_TIME;
-    m_Health = ENEMY_HEALTH;
+    m_Health = 30;
     m_DiedAnimation = 0.4;
     m_CoolDown=0;
-    m_Damage=2;
+    m_Damage=5;
     m_Deffend=0;
 
     m_Collider = new Collider();
@@ -59,7 +59,8 @@ void Enemy::Update(float dt)
     if(m_Health<0) m_Health=0;
     //health bar
     Vector2D cam = Camera::GetInstance()->GetPos();
-   health_box={m_Transform->X-cam.X+30,m_Transform->Y-cam.Y+10,m_Health,4};
+   health_box={m_Transform->X-cam.X+30,m_Transform->Y-cam.Y+10,(float)m_Health,4};
+   if(health_box.w>=40) health_box.w=40;
    //
     isRunning=false;
  m_RigidBody->UnSetForce();
@@ -105,10 +106,6 @@ else
     m_AttackTime=ENEMY_ATTACK_TIME;
 }
 
- if(isHitting)
- {
-     m_RigidBody->UnSetForce();
- }
  if(isDied)
  {
      m_RigidBody->UnSetForce();

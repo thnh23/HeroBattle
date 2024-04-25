@@ -4,6 +4,7 @@
 
 #include"Input.h"
 #include"TextureManager.h"
+#include"SDL_mixer.h"
 class Button
 {
     public:

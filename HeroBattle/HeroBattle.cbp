@@ -23,7 +23,9 @@
 					<Add directory="src/Physics" />
 					<Add directory="src/Vendor/TinyXML" />
 					<Add directory="src/Camera" />
-					<Add directory="Physics" />
+					<Add directory="src/GamePlay" />
+					<Add directory="src/Timer" />
+					<Add directory="./" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -45,6 +47,7 @@
 					<Add directory="src/Map" />
 					<Add directory="src/Camera" />
 					<Add directory="Physics" />
+					<Add directory="src/GamePlay" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -53,11 +56,18 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="../../../mingw_dev_lib/x86_64-w64-mingw32/include/SDL2" />
 		</Compiler>
+		<Linker>
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lSDL2_mixer" />
+			<Add directory="../../../mingw_dev_lib/x86_64-w64-mingw32/lib" />
+		</Linker>
 		<Unit filename="src/Animation/Animation.cpp" />
 		<Unit filename="src/Animation/Animation.h" />
 		<Unit filename="src/Camera/Camera.cpp" />
 		<Unit filename="src/Camera/Camera.h" />
+		<Unit filename="src/Characters/Boss.cpp" />
+		<Unit filename="src/Characters/Boss.h" />
 		<Unit filename="src/Characters/Character.h" />
 		<Unit filename="src/Characters/Enemy.cpp" />
 		<Unit filename="src/Characters/Enemy.h" />
@@ -65,6 +75,29 @@
 		<Unit filename="src/Characters/Knight.h" />
 		<Unit filename="src/Core/Engine.cpp" />
 		<Unit filename="src/Core/Engine.h" />
+		<Unit filename="src/GamePlay/GameOverState.cpp" />
+		<Unit filename="src/GamePlay/GameOverState.h" />
+		<Unit filename="src/GamePlay/GamePlay.cpp" />
+		<Unit filename="src/GamePlay/GamePlay.h" />
+		<Unit filename="src/GamePlay/GameState.h" />
+		<Unit filename="src/GamePlay/GameStateMachine.h" />
+		<Unit filename="src/GamePlay/GameWin.cpp" />
+		<Unit filename="src/GamePlay/GameWin.h" />
+		<Unit filename="src/GamePlay/InforState.cpp" />
+		<Unit filename="src/GamePlay/InforState.h" />
+		<Unit filename="src/GamePlay/LoadingState.cpp" />
+		<Unit filename="src/GamePlay/LoadingState.h" />
+		<Unit filename="src/GamePlay/MenuState.cpp" />
+		<Unit filename="src/GamePlay/MenuState.h" />
+		<Unit filename="src/GamePlay/PlayState.cpp" />
+		<Unit filename="src/GamePlay/PlayState.h" />
+		<Unit filename="src/GamePlay/ResumeState.cpp" />
+		<Unit filename="src/GamePlay/ResumeState.h" />
+		<Unit filename="src/GamePlay/ShopState.cpp" />
+		<Unit filename="src/GamePlay/ShopState.h" />
+		<Unit filename="src/Graphics/Button.h" />
+		<Unit filename="src/Graphics/HUD.cpp" />
+		<Unit filename="src/Graphics/HUD.h" />
 		<Unit filename="src/Graphics/TextureManager.cpp" />
 		<Unit filename="src/Graphics/TextureManager.h" />
 		<Unit filename="src/Inputs/Input.cpp" />
@@ -76,6 +109,7 @@
 		<Unit filename="src/Map/TileLayer.cpp" />
 		<Unit filename="src/Map/TileLayer.h" />
 		<Unit filename="src/Object/GameObject.h" />
+		<Unit filename="src/Object/Item.h" />
 		<Unit filename="src/Physics/Collider.h" />
 		<Unit filename="src/Physics/Collision.cpp" />
 		<Unit filename="src/Physics/Collision.h" />
@@ -83,6 +117,8 @@
 		<Unit filename="src/Physics/RigidBody.h" />
 		<Unit filename="src/Physics/Transform.h" />
 		<Unit filename="src/Physics/Vector2D.h" />
+		<Unit filename="src/Timer/Timer.cpp" />
+		<Unit filename="src/Timer/Timer.h" />
 		<Unit filename="src/Vendor/TinyXML/tinystr.cpp" />
 		<Unit filename="src/Vendor/TinyXML/tinystr.h" />
 		<Unit filename="src/Vendor/TinyXML/tinyxml.cpp" />

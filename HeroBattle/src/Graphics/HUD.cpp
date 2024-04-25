@@ -10,7 +10,7 @@ HUD* HUD::m_Instance=nullptr;
 void HUD::initHUD()
 {
     health=100;
-    GamePlay::GetInstance()->setNumCoin(1000);
+    GamePlay::GetInstance()->setNumCoin(0);
     m_Timer.start();
     minute=0;
     second=0;
@@ -40,7 +40,7 @@ void HUD::drawHUD()
 SDL_Surface* healthbar_sur = IMG_Load("Image/Bar.png");
 SDL_Texture* healthbar_tex = SDL_CreateTextureFromSurface(Engine::GetInstance()->getRenderer(), healthbar_sur);
 SDL_FreeSurface(healthbar_sur);
-SDL_Rect rect3{85,40,100+3,22};
+SDL_Rect rect3{85,40,103,22};
 SDL_Rect rect4{87,42,energy,18};
 SDL_RenderCopy(Engine::GetInstance()->getRenderer(), healthbar_tex, NULL, &rect3);
 SDL_SetRenderDrawColor(Engine::GetInstance()->getRenderer(),0,0,255,0);

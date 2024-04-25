@@ -58,6 +58,7 @@ class Knight : public Character
         bool isHitting;
         bool isDied;
         bool isSpecialAtk;
+        bool isLeft;
 
 
         float m_JumpForce ;

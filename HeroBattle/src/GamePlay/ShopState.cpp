@@ -37,9 +37,9 @@ void ShopState::render()
   TextureManager::GetInstance()->RenderText("+3 attack",{255,255,255},SCREEN_WIDTH/2+30,SCREEN_HEIGHT/2+10,50);
   TextureManager::GetInstance()->RenderText("+3 deffend",{255,255,255},SCREEN_WIDTH/2+30,SCREEN_HEIGHT/2+110,50);
 
-  TextureManager::GetInstance()->RenderText("10 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2-90,50);
-  TextureManager::GetInstance()->RenderText("5 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2+10,50);
-  TextureManager::GetInstance()->RenderText("5 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2+110,50);
+  TextureManager::GetInstance()->RenderText("20 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2-90,50);
+  TextureManager::GetInstance()->RenderText("10 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2+10,50);
+  TextureManager::GetInstance()->RenderText("10 coin",{255,255,255},SCREEN_WIDTH/2+300,SCREEN_HEIGHT/2+110,50);
 
   TextureManager::GetInstance()->DrawFrameNoCamera("resume_border",0,SCREEN_HEIGHT/2-200,300,400,1,0);
   TextureManager::GetInstance()->RenderText("STATS",{255,255,255},80,SCREEN_HEIGHT/2-170,70);
@@ -51,12 +51,12 @@ void ShopState::render()
     (*it)->draw();
  }
   if(GamePlay::GetInstance()->getKnight()->getHealth()<=0)   Engine::GetInstance()->getStateMachine()->changeState(new GameOverState());
-  if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP4")&&GamePlay::GetInstance()->getBoss()[0]->getHealth()<=0)  Engine::GetInstance()->getStateMachine()->changeState(new GameWin());
+   if(!GamePlay::GetInstance()->getBoss().empty() && GamePlay::GetInstance()->getBoss()[0]->getHealth()<=0)  Engine::GetInstance()->getStateMachine()->changeState(new GameWin());
 }
+
 
 bool ShopState::onEnter()
 {
-    Input::GetInstance()->reset();
    shopButton.push_back( new Button("buy",SCREEN_WIDTH/2+200,SCREEN_HEIGHT/2-80,64,32,1));
    shopButton.push_back( new Button("buy",SCREEN_WIDTH/2+200,SCREEN_HEIGHT/2+20,64,32,1));
    shopButton.push_back( new Button("buy",SCREEN_WIDTH/2+200,SCREEN_HEIGHT/2+120,64,32,1));
@@ -81,27 +81,27 @@ void ShopState::onMouseButtonUp(SDL_Event& e)
 {
  if(shopButton[0]->checkCollision(Input::GetInstance()->getMousePos()))
     {
-        if((GamePlay::GetInstance()->getNumCoin()>=10) &&  (GamePlay::GetInstance()->getKnight()->getHealth() != MAX_HEALTH))
+        if((GamePlay::GetInstance()->getNumCoin()>=20) &&  (GamePlay::GetInstance()->getKnight()->getHealth() != MAX_HEALTH))
         {
-         GamePlay::GetInstance()->updateCoin(10);
+         GamePlay::GetInstance()->updateCoin(20);
          GamePlay::GetInstance()->getKnight()->healing(20);
          Mix_PlayChannel(-1,GamePlay::GetInstance()->getKnight()->m_UpdagreSound,0);
         }
     }
     if(shopButton[1]->checkCollision(Input::GetInstance()->getMousePos()))
     {
-        if((GamePlay::GetInstance()->getNumCoin()>=5))
+        if((GamePlay::GetInstance()->getNumCoin()>=10))
         {
-       GamePlay::GetInstance()->updateCoin(5);
+       GamePlay::GetInstance()->updateCoin(10);
         GamePlay::GetInstance()->getKnight()->updateAttack(3);
          Mix_PlayChannel(-1,GamePlay::GetInstance()->getKnight()->m_UpdagreSound,0);
         }
     }
     if(shopButton[2]->checkCollision(Input::GetInstance()->getMousePos()))
     {
-        if(GamePlay::GetInstance()->getNumCoin()>=5)
+        if(GamePlay::GetInstance()->getNumCoin()>=10)
         {
-         GamePlay::GetInstance()->updateCoin(5);
+         GamePlay::GetInstance()->updateCoin(10);
          GamePlay::GetInstance()->getKnight()->updateDeffend(3);
           Mix_PlayChannel(-1,GamePlay::GetInstance()->getKnight()->m_UpdagreSound,0);
         }

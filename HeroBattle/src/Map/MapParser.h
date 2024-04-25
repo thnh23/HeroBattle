@@ -10,7 +10,7 @@
 class MapParser
 {
   public:
-     bool Load();
+     bool Load(std::string path, std::string mapName);
      void Clean();
 
 
