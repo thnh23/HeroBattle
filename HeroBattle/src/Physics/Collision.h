@@ -12,15 +12,13 @@ class Collision
     public:
        bool checkCollision(SDL_Rect a, SDL_Rect b);
        bool MapCollision(SDL_Rect a);
-
+       void init();
      inline static Collision* GetInstance()
   {
     return m_Instance =(m_Instance !=nullptr)?m_Instance : new Collision();
   }
-
     private:
         static Collision* m_Instance;
-        Collision();
         TileMap m_CollisionTilemap;
         TileLayer* m_CollisionLayer;
 };

@@ -21,11 +21,16 @@ class Vector2D
         {
             return Vector2D(X*scalar, Y*scalar);
         }
+   void setX(float xpos) { X = xpos;}
+   void setY(float ypos) { Y = ypos; }
   void Log(std::string mag = "")
   {
     std::cout<<mag<<"(X Y) = ("<<X<<" "<<Y<<")"<<std::endl;
   }
 };
+
+
+
 
 
 #endif

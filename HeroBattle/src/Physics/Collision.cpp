@@ -3,7 +3,7 @@
 #include<iostream>
 
  Collision* Collision::m_Instance=nullptr;
-Collision::Collision()
+void Collision::init()
 {
     m_CollisionLayer=(TileLayer*)Engine::GetInstance()->GetMap()->GetMapLayers().back();
     m_CollisionTilemap = m_CollisionLayer->GetTileMap();
