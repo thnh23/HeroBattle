@@ -13,6 +13,7 @@ GamePlay* GamePlay::m_Instance = nullptr;
 
 void GamePlay::init()
 {
+    EnemyKill=0;
      Engine::GetInstance()->setMap("MAP1");
     Collision::GetInstance()->init();
   player = new Knight(new Properties("knight",50,300,72,86));
@@ -42,6 +43,7 @@ void GamePlay::init()
   {
       enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
   }
+//  bossArr.push_back(new Boss(new Properties("boss",1000,0,100,180)));
 }
 
 void GamePlay::update(float dt)
@@ -223,13 +225,13 @@ else if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP4"
 //check enemy dead
    for(auto it = enemyArr.begin(); it != enemyArr.end(); ++it)
     {
-      if((*it)->getHealth()<=0)
+      if((*it)->getHealth()==0)
      {
-         EnemyKill++;
        (*it)->isDied = true;
        (*it)->m_DiedAnimation-=dt;
        if((*it)->m_DiedAnimation<=0)
        {
+            EnemyKill++;
            for(int i=0; i<rand()%5+1;i++) ItemArr.push_back(new Item(new Properties("coin",(*it)->GetTransform()->X+(rand()%40+1),(*it)->GetTransform()->Y,16,16)));
          delete (*it);
          (*it) = nullptr;
@@ -340,6 +342,13 @@ void GamePlay::close()
     {
          (*it) = nullptr;
          bossAttack.erase(it);
+         --it;
+    }
+    for(auto it = ItemArr.begin(); it!= ItemArr.end();++it)
+    {
+        delete (*it);
+         (*it) = nullptr;
+         ItemArr.erase(it);
          --it;
     }
 }

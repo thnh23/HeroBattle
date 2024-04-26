@@ -153,7 +153,7 @@ if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_W) && isGround )
     isGround = false;
     isJumping=true;
     m_RigidBody->ApplyForceY(UPWARD*m_JumpForce);
-     Mix_VolumeChunk(m_JumpSound,20);
+     Mix_VolumeChunk(m_JumpSound,60);
      Mix_PlayChannel( -1, m_JumpSound, 0 );
 }
 if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_W) && isJumping && m_JumpTime>0)

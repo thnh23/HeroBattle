@@ -10,7 +10,7 @@ HUD* HUD::m_Instance=nullptr;
 void HUD::initHUD()
 {
     health=100;
-    GamePlay::GetInstance()->setNumCoin(0);
+    GamePlay::GetInstance()->setNumCoin(20);
     m_Timer.start();
     minute=0;
     second=0;

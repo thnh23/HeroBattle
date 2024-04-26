@@ -104,7 +104,7 @@ if(m_specialTime>0 && isSpecialAtk)
  }
 
  //attack
-    if(Collision::GetInstance()->checkCollision(GamePlay::GetInstance()->getKnight()->GetCollider()->Get(),m_Collider->Get()) )
+    if(Collision::GetInstance()->checkCollision(GamePlay::GetInstance()->getKnight()->GetCollider()->Get(),m_Collider->Get()) && !isSpecialAtk )
     {
         m_RigidBody->UnSetForce();
         m_Transform->X=m_LastSafePosition.X;
