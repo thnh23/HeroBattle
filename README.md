@@ -1,6 +1,6 @@
 # Hero Battle
 - Bài tập lớn môn học Lập trình nâng cao sử dụng ngôn ngữ C++ và thư viện SDL2
-- Video giới thiệu game:
+- Video giới thiệu game: <https://www.youtube.com/watch?v=EUNGyMjDoD0>
 # Giới thiệu game
 - Trong Hero Battle, bạn sẽ điều khiển nhân vật hiệp sĩ đánh bại quái trong từng bản đồ. Sau khi đánh bại hết quái trong từng bản đồ, bạn di chuyển sang bản đồ tiếp theo. Nhiệm vụ của bạn là đánh bại boss để hoàn thành game. 
 ## 1.Cách chơi
@@ -39,10 +39,11 @@
 + Folder GamePlay:
   + Chứa logic game
   + Gồm các game state: menu, resume,shop, win, lose
+  + Chuyển map trong game 
 + Folder Graphic:
    + Render ảnh, ảnh mờ, chữ
    + Lưu trữ ảnh
-   + Class Button: các nút tương
+   + Class Button: các nút chức năng của game 
    + Class HUD: biểu diễn các thông số nhân vật
 + Folder Inputs: xử lí các sự kiện của game: bàn phím và chuột
 + Folder Map: load map từ file .tmx
