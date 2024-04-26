@@ -1,6 +1,9 @@
 # Hero Battle
 - Bài tập lớn môn học Lập trình nâng cao sử dụng ngôn ngữ C++ và thư viện SDL2
 - Video giới thiệu game: <https://www.youtube.com/watch?v=EUNGyMjDoD0>
+# Cách tải game
+- Tải game được nén thành file zip ở trong link sau <https://github.com/thnh23/HeroBattle/releases/tag/v1.0.0>
+- Giải nén vào thư mục rồi ấn vào file exe để chơi
 # Giới thiệu game
 - Trong Hero Battle, bạn sẽ điều khiển nhân vật hiệp sĩ đánh bại quái trong từng bản đồ. Sau khi đánh bại hết quái trong từng bản đồ, bạn di chuyển sang bản đồ tiếp theo. Nhiệm vụ của bạn là đánh bại boss để hoàn thành game. 
 ## 1.Cách chơi
@@ -24,7 +27,7 @@
 + Khi muốn tạm dừng game, bạn ấn vào icon resume, đây là cửa sổ sẽ hiện ra
   ![resume](https://github.com/thnh23/HeroBattle/blob/master/HeroBattle/Image/resumePic.png)
 + Khi đã đánh bại hết quái ở map, hãy đi sang phải để sang map tiếp theo
-## Điều kiện thắng và thua
+## 2.Điều kiện thắng và thua
 - Chiến thắng: Khi bạn đánh bại thắng boss ở map cuối cùng ![gameWin](https://github.com/thnh23/HeroBattle/blob/master/HeroBattle/Image/gameWin.png)
 - Thất bại: Khi máu của nhân vật bằng 0!  ![gameLose](https://github.com/thnh23/HeroBattle/blob/master/HeroBattle/Image/gameOver.png)
 # Mã nguồn tham khảo 
