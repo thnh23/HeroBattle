@@ -107,8 +107,7 @@ bool Engine::Init()
     TextureManager::GetInstance()->Load("back","Image/back.png");
     TextureManager::GetInstance()->Load("loading","Image/polygon1.png");
      Mix_PlayMusic(m_Music,-1);
-      Mix_VolumeMusic(30);
-
+      Mix_VolumeMusic(10);
     GamePlay::GetInstance()->init();
 
     Camera::GetInstance()->SetTarget(GamePlay::GetInstance()->getKnight()->GetOrigin());
@@ -135,7 +134,6 @@ void Engine::Render()
 void Engine::Events()
 {
     Input::GetInstance()->Listen();
-
 }
 
 void Engine::Clean()

@@ -15,7 +15,6 @@ int main(int argc, char*argv[])
     while(Engine::GetInstance()->IsRunning())
     {
         float deltaTime = Timer::GetInstance()->getTime()- time_last_update;
-        //std::cout<<deltaTime<<std::endl;
         time_last_update+=deltaTime;
         time_accumulator+=deltaTime;
         while(time_accumulator>=time_slice)

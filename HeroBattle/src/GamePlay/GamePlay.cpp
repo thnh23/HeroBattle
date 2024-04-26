@@ -41,7 +41,7 @@ void GamePlay::init()
 
    for(int i=0;i<10;i++)
   {
-      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,300,96,64)));
   }
 //  bossArr.push_back(new Boss(new Properties("boss",1000,0,100,180)));
 }
@@ -57,7 +57,7 @@ if(Engine::GetInstance()->GetMap()==MapParser::GetInstance()->GetMap("MAP1"))
        Collision::GetInstance()->init();
         for(int i=0;i<10;i++)
   {
-      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,0,96,64)));
+      enemyArr.push_back( new Enemy( new Properties("enemy",(rand()%1000+200)+96,200,96,64)));
       enemyArr.back()->setHealth(40);
   }
    for(auto it = ItemArr.begin(); it != ItemArr.end(); ++it)
